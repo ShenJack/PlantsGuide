@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="icon" href="favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="548233692046-j3s4hv12eb4eme11i7a4f9a7vkl3v433.apps.googleusercontent.com">
+  <meta content="rgba(156, 156, 156, 0.33)" name="theme-color"/>
+  <meta
+    name="description"
+    content="Web site created using create-react-app"
+  />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="548233692046-j3s4hv12eb4eme11i7a4f9a7vkl3v433.apps.googleusercontent.com">
+  <link rel="apple-touch-icon" href="logo192.png"/>
+  <link rel="manifest" href="manifest.json"/>
+  <link
+    rel="stylesheet"
+    href="//at.alicdn.com/t/font_1446117_evg0romnl4.css"
+  />
+  <title>Luck Hunt</title>
+  <style>
+    .bg {
+      z-index: 100; /*background: white;*/
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px; /*box-shadow: #cccccc 0 0 8px 0px;*/
+    }
+
+    #bare-loading {
+      position: fixed;
+      left: 0;
+      top: -100px;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<script>
+  function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+  }
+
+    document.addEventListener("chunk-progress-webpack-plugin", function (event) {
+        let {resource} = event.detail;
+        document.getElementById("loading-progress").innerText =
+            Math.round((resource.loaded / resource.total) * 100) + "%";
+    });
+
+    (function (window) {
+        let bareLoading = document.getElementById("bare-loading");
+        let loadingPath;
+
+        let speed = 0.8;
+        let _percent = 0.2;
+        let strokeWidth = 3;
+        let buttonHeight = 80;
+
+        function loaded() {
+            return _percent >= 1;
+        }
+
+        function loading() {
+            if (bareLoading) {
+                loadingPath = bareLoading.querySelector("#loadingPath");
+                bareLoading.style.display = "flex";
+                nextFrame(undefined, buttonHeight, 0, _percent);
+            } else {
+                nextFrame(undefined, buttonHeight, 0, _percent);
+            }
+        }
+
+        function updateLoadingStatus(percent, instant = false) {
+            let initialPercent = _percent;
+            let startTime = Date.now();
+            if (instant) {
+                _percent = percent;
+            } else {
+                let timer = setInterval(() => {
+                    // debugger
+                    if (initialPercent + (Date.now() - startTime) / 300 >= percent) {
+                        _percent = percent;
+                        clearInterval(timer);
+                    } else {
+                        _percent = initialPercent + (Date.now() - startTime) / 300;
+                    }
+                }, 30);
+            }
+        }
+
+        function fillObject() {
+            if (bareLoading == null) {
+                let obj = document.getElementById("bare-loading");
+                if (obj != null) {
+                    bareLoading = obj;
+                    loadingPath = obj.querySelector("#loading-path");
+                }
+            }
+        }
+
+        function nextFrame(
+            lastTime,
+            buttonHeight,
+            animationStartPercent,
+            animationPercent,
+        ) {
+            requestAnimationFrame(time => {
+                fillObject();
+                // animationPercent = animationPercent + (time - lastTime) / 1000 * speed;
+                // console.log((((time - lastTime) / 1000) * speed))
+                if (lastTime == null) {
+                    lastTime = time;
+                }
+                animationStartPercent =
+                    animationStartPercent + ((time - lastTime) / 1000) * speed;
+
+                // animationPercent = 0.5 + _percent * 0.5;
+                animationPercent = _percent;
+
+                let d = partialCircle(
+                    buttonHeight / 2,
+                    buttonHeight / 2,
+                    buttonHeight / 2,
+                    2 * Math.PI * animationStartPercent,
+                    2 * Math.PI * (animationStartPercent + animationPercent),
+                );
+                loadingPath.setAttribute("d", d);
+                loadingPath.setAttribute("stroke-width", strokeWidth);
+                if (!loaded()) {
+                    nextFrame(
+                        time,
+                        buttonHeight,
+                        animationStartPercent,
+                        animationPercent,
+                    );
+                } else {
+                    if (bareLoading) bareLoading.style.display = "none";
+                }
+            });
+        }
+
+        function partialCircle(cx, cy, r, start, end) {
+            const length = end - start;
+            if (length === 0) return "";
+
+            const fromX = r * Math.cos(start - Math.PI / 2) + cx;
+            const fromY = r * Math.sin(start - Math.PI / 2) + cy;
+            const toX = r * Math.cos(end - Math.PI / 2) + cx;
+            const toY = r * Math.sin(end - Math.PI / 2) + cy;
+            const large = Math.abs(length) <= Math.PI ? "0" : "1";
+            const sweep = length < 0 ? "0" : "1";
+
+            return [
+                ["M", fromX, fromY].join(" "),
+                ["A", r, r, 0, large, sweep, toX, toY].join(" "),
+            ].join(" ");
+        }
+
+        window.bareLoading = {
+            updateLoadingStatus,
+            loading,
+        };
+        loading();
+    })(window);
+</script>
+<body>
+<div id="bare-loading">
+  <div class="bg">
+    <svg height="80" width="80" style="overflow: visible">
+      <path id="loading-path" stroke="#ccc" fill="none"/>
+    </svg>
+  </div>
+
+  <div id="loading-progress"></div>
+</div>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+<div id="root"></div>
+
+<!--
+This HTML file is a template.
+If you open it directly in the browser, you will see an empty page.
+
+You can add webfonts, meta tags, or analytics to this file.
+The build step will place the bundled scripts into the <body> tag.
+
+To begin the development, run `npm start` or `yarn start`.
+To create a production bundle, use `npm run build` or `yarn build`.
+-->
+</body>
+</html>

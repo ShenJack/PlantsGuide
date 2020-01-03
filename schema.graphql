@@ -1,0 +1,89 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Comment {
+  _id: String
+  content: String
+  createBy: User
+  createTime: String
+  dislikes: Int
+  likes: Int
+  post: Post
+  postId: String
+}
+
+type CommentsResult {
+  list: [Comment]
+  totalCount: Int
+}
+
+type DeleteResult {
+  _id: String
+  reason: String
+  success: Boolean
+}
+
+type Mutation {
+  createComment(content: String, postId: String): Comment
+  createPost(content: String, cover: String, isPublic: Boolean, tags: [String], title: String): Post
+  createTag(name: String): Tag
+  deletePost(_id: String): DeleteResult
+  deleteTag(_id: String): DeleteResult
+  likeComment(commentId: String): Comment
+  likePost(_id: String): Post
+  updatePost(_id: String, content: String, cover: String, isPublic: Boolean, tags: [String], title: String): Post
+  updateTag(_id: String, isPublic: Boolean): Tag
+}
+
+type Post {
+  _id: String
+  comments: [Comment]
+  content: String
+  cover: String
+  createBy: User!
+  createTime: String
+  isPublic: Boolean
+  tags: [Tag]
+  title: String
+  updateTime: String
+  userId: String!
+}
+
+type PostsResult {
+  list: [Post]
+  totalCount: Int
+}
+
+type Query {
+  comments(_id: String, limit: Int, postId: String, skip: Int): CommentsResult
+  "get single post"
+  post(_id: String): Post
+  posts(limit: Int, skip: Int, tagId: String, title: String): PostsResult
+  tags(name: String): [Tag]
+  user(_id: String): User
+}
+
+type Tag {
+  _id: String!
+  count: Int
+  createTime: String
+  isPublic: Boolean
+  name: String!
+}
+
+type User {
+  icon: String!
+  role: Int!
+  "username"
+  username: String!
+}
+
+input TagInput {
+  _id: String!
+  isPublic: Boolean
+  name: String
+}

@@ -1,0 +1,28 @@
+query queryTags($name: String) {
+  tags(name: $name) {
+    _id
+    name
+    count
+    isPublic
+  }
+}
+
+mutation createTag($name: String) {
+  createTag(name: $name) {
+    _id
+    name
+  }
+}
+
+mutation deleteTag($_id: String) {
+  deleteTag(_id: $_id) {
+    _id
+    success
+  }
+}
+
+mutation updateTag($_id: String, $isPublic: Boolean) {
+  updateTag(_id: $_id, isPublic: $isPublic) {
+    _id
+  }
+}

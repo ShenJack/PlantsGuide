@@ -1,0 +1,82 @@
+query getPost($_id:String){
+  post(_id:$_id){
+    _id
+    title
+    content
+    cover
+    isPublic
+    userId
+    createTime
+    updateTime
+    createBy {
+      username
+      icon
+    }
+    tags{
+      _id
+      name
+    }
+  }
+}
+
+
+
+query getPosts($skip: Int, $limit: Int,$title:String,$tagId:String){
+  posts(skip:$skip,limit:$limit,title:$title,tagId:$tagId){
+    list{
+      _id
+      title
+      cover
+      isPublic
+      userId
+      createTime
+      updateTime
+      createBy {
+        username
+        icon
+      }
+      tags{
+        _id
+        name
+      }
+      comments{
+        content
+        _id
+        createTime
+      }
+    }
+    totalCount
+  }
+}
+
+
+mutation createPost($title:String,$content:String,$cover:String,$isPublic:Boolean,$tags:[String]){
+  createPost(title:$title,content:$content,cover:$cover,isPublic:$isPublic,tags:$tags){
+    _id
+    title
+    content
+    cover
+    isPublic
+    tags{
+      _id
+      name
+    }
+  }
+}
+
+
+mutation updatePost($_id:String,$title:String,$content:String,$cover:String,$isPublic:Boolean,$tags:[String]){
+  updatePost(_id:$_id,title:$title,content:$content,cover:$cover,isPublic:$isPublic,tags:$tags){
+    _id
+    title
+    content
+    cover
+    isPublic
+    tags{
+      _id
+      name
+    }
+  }
+}
+
+

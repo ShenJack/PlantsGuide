@@ -1,0 +1,16 @@
+$headerHeight: 80px;
+$headerHeightFold: 45px;
+
+
+$textMedium:17px;
+
+$maxWidth: 1000px;
+
+$pagePadding:24px;
+
+
+.content {
+  width: 100%;
+  margin: 0 auto;
+  max-width: $maxWidth;
+}

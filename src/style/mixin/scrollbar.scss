@@ -1,0 +1,34 @@
+@mixin scroll-bar-hide() {
+  &::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 0;
+    width: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    height: 0;
+    width: 0;
+  }
+}
+
+@mixin scroll-bar-thin($width:6px) {
+  &::-webkit-scrollbar {
+    //height: 1px;
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    //height: 1px;
+    width: $width;
+    background: #9ea7aa;
+  }
+
+  &::-webkit-scrollbar-track {
+    //height: 0;
+    //width: 0;
+  }
+}

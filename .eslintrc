@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "react-hooks"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ]
+  },
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/prefer-default-export": "off"
+  }
+}
