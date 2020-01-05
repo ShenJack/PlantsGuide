@@ -6,7 +6,7 @@ module.exports = options => ({
   entry: options.entry,
   output: Object.assign(
     {
-      filename: "main.js",
+      filename: "main.tsx",
       path: path.resolve(process.cwd(), "build"),
       publicPath: "",
     },
@@ -25,6 +25,7 @@ module.exports = options => ({
           },
         },
       },
+      {test: /\.tsx?$/, loader: "ts-loader", exclude: /node_modules/},
       {
         test: /\.(graphql|gql)$/,
         exclude: /node_modules/,
@@ -113,7 +114,7 @@ module.exports = options => ({
   plugins: options.plugins,
   resolve: {
     modules: ["node_modules", "src"],
-    extensions: [".js", ".jsx", ".react.js"],
+    extensions: [".js", ".ts", ".tsx", ".jsx", ".react.js"],
     mainFields: ["browser", "jsnext:main", "main"],
     alias: {
       Src: path.resolve(__dirname, "../src"),

@@ -1,25 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./main.scss";
 import "sanitize.css";
 import {formatTime} from "./utils/time";
-import {Loadable} from "./components/Loadabe";
 import {appInitialize} from "./appinitial";
-import {load} from "../plugins/ChunkProgress/helper";
-// import LogRocket from 'logrocket';
+import {App} from "./App";
+// let App = Loadable({
+//   loader: load(
+//     () => import(/*webpackChunkName:"App"*/ "./App"),
+//     "App",
+//     progress => console.log("progress is " + progress),
+//   ),
+//   loading: () => <div />,
+// });
 
-let App = Loadable({
-  loader: load(
-    () => import(/*webpackChunkName:"App"*/ "./App"),
-    "App",
-    progress => console.log("progress is " + progress),
-  ),
-  loading: () => <div />,
-});
-
-appInitialize().then(res => {
+// appInitialize().then(res => {
   ReactDOM.render(<App />, document.getElementById("root"));
-});
+// });
 
 if (["prod", "production"].includes(process.env.NODE_ENV)) {
   console.log(`BUILD_TIME: ${formatTime(new Date(process.env.BUILD_TIME))}`);

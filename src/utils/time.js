@@ -1,10 +1,10 @@
 import moment, {Moment} from "moment";
 
-export function formatTime(time: any) {
+export function formatTime(time) {
   if (typeof time === "string") {
     time = parseInt(time);
   }
-  let momentTime: Moment = moment(time);
+  let momentTime = moment(time);
   let diff = moment().diff(momentTime);
   if (diff < 60 * 1000) {
     return `${(diff / 1000).toFixed()}秒前`;

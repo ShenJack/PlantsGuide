@@ -1,87 +1,43 @@
-@import "./style/base";
-@import "~tailwindcss/dist/base.css";
-@import "~tailwindcss/dist/components";
-@import "~tailwindcss/dist/utilities";
-
-html {
-  height: 100%;
-}
-
 body {
   height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
 }
 
 #root {
   height: 100%;
 }
 
-.app {
+@import "style/base";
+@import "~tailwindcss/dist/base.min.css";
+@import "~tailwindcss/dist/components.min.css";
+@import "~tailwindcss/dist/tailwind.min.css";
+@import "~tailwindcss/dist/utilities.min.css";
+
+.app-content {
   height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  overflow: hidden;
-
-  &.__black {
-    background-color: black;
-    color: white;
-  }
-
-  &.__white {
-    background-color: white;
-    color: black;
-  }
-
-  & > .app-loading {
-    position: fixed;
-    left: 50%;
-    transition: 200ms;
-    transform: translateX(-50%) translateY(-50%);
-    height: 80px;
-    width: 80px;
-    top: 50%;
-    /* background: #00000014; */
-    border-radius: 50%;
-    border: 5px solid gray;
-  }
-
-  & > .scrolling-content {
-    @include scroll-bar-hide();
-    padding-top: 80px;
-    min-height: 100%;
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    overflow-y: scroll;
-
-    & > .content {
-      width: 100%;
-      flex: 1 0 auto;
-      display: flex;
-      overflow: hidden;
-      flex-direction: column;
-      max-width: $maxWidth;
-      align-items: center;
-      min-height: 200px;
-    }
-
-    & > .footer {
-      flex: 0 0 auto;
-    }
-  }
+  @include flex-center();
 }
 
-.app-logo {
-  height: 7vmin;
+
+.switch-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.app-link {
-  color: #09d3ac;
-}
-
-.button-container {
-  display: flex;
+.switch-wrapper > div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
