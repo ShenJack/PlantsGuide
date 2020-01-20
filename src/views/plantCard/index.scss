@@ -1,8 +1,17 @@
 @import "../../../src/style/base";
 
 .plant-card{
+  background-color: white;
   img{
-    height: 200px;
+    height: auto;
     width: 100%;
+    border-bottom-right-radius: 400px;
+    &:hover{
+      border-bottom-right-radius: 0;
+      transition: 0.1s;
+      transform: scale(0.95);
+    }
   }
 }
+
+
