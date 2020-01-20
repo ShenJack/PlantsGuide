@@ -18,7 +18,9 @@ export function PlantsList(props: ListProps) {
 
 function PlantItem(props: Plant) {
   return <div className="plant-item">
-    Plant
+    <Button onClick={() => appHistory.push('/plant-card')}>
+      PlantCard
+    </Button>
     <Button onClick={() => appHistory.push('/vr')}>
       全景图
     </Button>
