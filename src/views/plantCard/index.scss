@@ -2,16 +2,20 @@
 
 .plant-card{
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   img{
     height: auto;
     width: 100%;
     border-bottom-right-radius: 400px;
-    &:hover{
-      border-bottom-right-radius: 0;
-      transition: 0.1s;
-      transform: scale(0.95);
-    }
   }
+}
+
+.click{
+  border-bottom-right-radius: 0;
+  transition: 0.1s;
+  transform: scale(0.95);
 }
 
 
