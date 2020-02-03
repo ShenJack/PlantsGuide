@@ -6,6 +6,7 @@ import {List} from "../views/list";
 import {Map} from "../views/map";
 import {VRView} from "../views/vrView";
 import {PlantCard} from "../views/plantCard";
+import {LikeButton} from "../views/buttons/likeButton";
 
 export const routes = [
   {
@@ -37,6 +38,11 @@ export const routes = [
     path: "/plant-card",
     exact: true,
     component: PlantCard
+  },
+  {
+    path: "/test",
+    exact: true,
+    component: LikeButton
   }
 ];
 

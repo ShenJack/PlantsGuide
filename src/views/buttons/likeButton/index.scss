@@ -1,0 +1,51 @@
+.like-button{
+  height: 3rem;
+  width: 3rem;
+  //padding: 0.5rem;
+  //border: solid 0.1rem;
+  //border-radius: 0.5rem;
+  svg{
+    margin: auto;
+
+  }
+  svg:active{
+    transform:scale(0.9);
+    transition: 0.55s;
+  }
+}
+.like-button::before{
+  position: absolute;
+  content: '';
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(circle, rgb(229, 64, 79) 20%, transparent 0),
+    radial-gradient(circle, rgb(229, 64, 79) 20%, transparent 0),
+    radial-gradient(circle, rgb(229, 64, 79) 20%, transparent 0),
+    radial-gradient(circle, rgb(229, 64, 79) 20%, transparent 0),
+    radial-gradient(circle, rgb(229, 64, 79) 20%, transparent 0),
+    radial-gradient(circle, rgb(229, 64, 79) 20%, transparent 0),
+    radial-gradient(circle, rgb(229, 64, 79) 20%, transparent 0);
+  //background-size: 2% 2%, 3% 3%, 2% 2%, 2% 2%, 3% 3%, 2% 2%, 3% 3%;
+  //background-position: 2% 1%, 3% -0.1%, 6% 1%, 7% 2.5%, 8% 1%, 5% 3%, 2% 1.5%;
+  background-size: 0 0;
+  background-position: -1% -1%, 3% -0.1%, 6% 1%, 7% 2.5%, 8% 1%, 5% 3%, 2% 1.5%;
+  transition:
+    0.5s background-position ease-in-out,
+    0.75s background-size ease-in-out;
+}
+
+.like-button:active::before{
+  //background-position: -1% -1%, 3% -0.1%, 6% 1%, 7% 2.5%, 8% 1%, 5% 3%, 2% 1.5%;
+  //background-size: 0 0;
+  //transition:
+  //  0.75s background-position ease-in-out,
+  //  0.75s background-size ease-in-out;
+  transition: 0s;
+  background-size: 2% 2%, 3% 3%, 2% 2%, 2% 2%, 3% 3%, 2% 2%, 3% 3%;
+  background-position: 2% 1%, 3% -0.1%, 6% 1%, 7% 2.5%, 8% 1%, 5% 3%, 2% 1.5%;
+}

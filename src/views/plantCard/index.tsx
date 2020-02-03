@@ -1,13 +1,23 @@
 import "./index.scss";
-import React from "react";
+import React,{useState} from "react";
 import {Button} from "antd";
 import {Card} from "antd";
 import {appHistory} from "../../router";
 
 export function PlantCard() {
+  // const [animated, setAnimated] = useState(false);
+  let animated = false;
   return (
     <div className="plant-card">
-        <img src={img}/>
+        <img className="plant-card-img" src={img} onClick={() => {
+          if(animated == false){
+            document.getElementsByClassName("plant-card-img")[0].className += ' click';
+            animated = !animated;
+          } else {
+            document.getElementsByClassName("plant-card-img")[0].className = 'plant-card-img';
+            animated = !animated;
+          }
+        }} />
       <div className="plant-details">
         <TabsCard />
       </div>
