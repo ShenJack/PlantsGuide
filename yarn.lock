@@ -1429,6 +1429,11 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
+"@types/animejs@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/@types/animejs/download/@types/animejs-3.1.0.tgz#9fa31e5fcf3a0304aa097a2a357e03630d820ab1"
+  integrity sha1-n6MeX886AwSqCXoqNX4DYw2CCrE=
+
 "@types/babel__core@^7.1.0":
   version "7.1.3"
   resolved "http://npm.6tiantian.com:4873/@types%2fbabel__core/-/babel__core-7.1.3.tgz#e441ea7df63cd080dfcd02ab199e6d16a735fc30"
@@ -1486,6 +1491,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/history@*", "@types/history@^4.7.5":
+  version "4.7.5"
+  resolved "https://registry.npm.taobao.org/@types/history/download/@types/history-4.7.5.tgz#527d20ef68571a4af02ed74350164e7a67544860"
+  integrity sha1-Un0g72hXGkrwLtdDUBZOemdUSGA=
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "http://npm.6tiantian.com:4873/@types%2fistanbul-lib-coverage/-/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"
@@ -1530,6 +1540,23 @@
   version "1.5.2"
   resolved "http://npm.6tiantian.com:4873/@types%2fq/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
+
+"@types/react-router-dom@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npm.taobao.org/@types/react-router-dom/download/@types/react-router-dom-5.1.3.tgz#b5d28e7850bd274d944c0fbbe5d57e6b30d71196"
+  integrity sha1-tdKOeFC9J02UTA+75dV+azDXEZY=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*", "@types/react-router@^5.1.4":
+  version "5.1.4"
+  resolved "https://registry.npm.taobao.org/@types/react-router/download/@types/react-router-5.1.4.tgz#7d70bd905543cb6bcbdcc6bd98902332054f31a6"
+  integrity sha1-fXC9kFVDy2vL3Ma9mJAjMgVPMaY=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
 
 "@types/react-slick@^0.23.4":
   version "0.23.4"
@@ -1935,6 +1962,11 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "http://npm.6tiantian.com:4873/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
+
+animejs@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/animejs/download/animejs-3.1.0.tgz#748a90fc1d4bef3efed64508af9a6a82babf5c47"
+  integrity sha1-dIqQ/B1L7z7+1kUIr5pqgrq/XEc=
 
 ansi-colors@^3.0.0:
   version "3.2.4"
@@ -7662,9 +7694,9 @@ ignore@^5.0.6:
   resolved "http://npm.6tiantian.com:4873/ignore/-/ignore-5.1.4.tgz#84b7b3dbe64552b6ef0eca99f6743dbec6d97adf"
   integrity sha1-hLez2+ZFUrbvDsqZ9nQ9vsbZet8=
 
-image-webpack-loader@4.6.0:
+image-webpack-loader@^4.6.0:
   version "4.6.0"
-  resolved "http://npm.6tiantian.com:4873/image-webpack-loader/-/image-webpack-loader-4.6.0.tgz#c38eb723c8a50cca46298654a74d5a4f26f9a501"
+  resolved "https://registry.npm.taobao.org/image-webpack-loader/download/image-webpack-loader-4.6.0.tgz#c38eb723c8a50cca46298654a74d5a4f26f9a501"
   integrity sha1-w463I8ilDMpGKYZUp01aTyb5pQE=
   dependencies:
     imagemin "^5.3.1"
@@ -7679,7 +7711,7 @@ image-webpack-loader@4.6.0:
 
 imagemin-gifsicle@^6.0.0:
   version "6.0.1"
-  resolved "http://npm.6tiantian.com:4873/imagemin-gifsicle/-/imagemin-gifsicle-6.0.1.tgz#6abad4e95566d52e5a104aba1c24b4f3b48581b3"
+  resolved "https://registry.npm.taobao.org/imagemin-gifsicle/download/imagemin-gifsicle-6.0.1.tgz#6abad4e95566d52e5a104aba1c24b4f3b48581b3"
   integrity sha1-arrU6VVm1S5aEEq6HCS087SFgbM=
   dependencies:
     exec-buffer "^3.0.0"
@@ -7697,7 +7729,7 @@ imagemin-mozjpeg@^8.0.0:
 
 imagemin-optipng@^6.0.0:
   version "6.0.0"
-  resolved "http://npm.6tiantian.com:4873/imagemin-optipng/-/imagemin-optipng-6.0.0.tgz#a6bfc7b542fc08fc687e83dfb131249179a51a68"
+  resolved "https://registry.npm.taobao.org/imagemin-optipng/download/imagemin-optipng-6.0.0.tgz#a6bfc7b542fc08fc687e83dfb131249179a51a68"
   integrity sha1-pr/HtUL8CPxofoPfsTEkkXmlGmg=
   dependencies:
     exec-buffer "^3.0.0"
@@ -7706,7 +7738,7 @@ imagemin-optipng@^6.0.0:
 
 imagemin-pngquant@^6.0.0:
   version "6.0.1"
-  resolved "http://npm.6tiantian.com:4873/imagemin-pngquant/-/imagemin-pngquant-6.0.1.tgz#07b4c80e327ac60ef5246758029b1e8aecd879b9"
+  resolved "https://registry.npm.taobao.org/imagemin-pngquant/download/imagemin-pngquant-6.0.1.tgz#07b4c80e327ac60ef5246758029b1e8aecd879b9"
   integrity sha1-B7TIDjJ6xg71JGdYApseiuzYebk=
   dependencies:
     execa "^0.10.0"
@@ -7724,7 +7756,7 @@ imagemin-svgo@^7.0.0:
 
 imagemin-webp@^5.0.0:
   version "5.1.0"
-  resolved "http://npm.6tiantian.com:4873/imagemin-webp/-/imagemin-webp-5.1.0.tgz#ddb1307ad97aff97293c5a600e384e40c07f68a7"
+  resolved "https://registry.npm.taobao.org/imagemin-webp/download/imagemin-webp-5.1.0.tgz#ddb1307ad97aff97293c5a600e384e40c07f68a7"
   integrity sha1-3bEwetl6/5cpPFpgDjhOQMB/aKc=
   dependencies:
     cwebp-bin "^5.0.0"
@@ -7733,7 +7765,7 @@ imagemin-webp@^5.0.0:
 
 imagemin@^5.3.1:
   version "5.3.1"
-  resolved "http://npm.6tiantian.com:4873/imagemin/-/imagemin-5.3.1.tgz#f19c2eee1e71ba6c6558c515f9fc96680189a6d4"
+  resolved "https://registry.npm.taobao.org/imagemin/download/imagemin-5.3.1.tgz?cache=0&sync_timestamp=1573809177941&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fimagemin%2Fdownload%2Fimagemin-5.3.1.tgz#f19c2eee1e71ba6c6558c515f9fc96680189a6d4"
   integrity sha1-8Zwu7h5xumxlWMUV+fyWaAGJptQ=
   dependencies:
     file-type "^4.1.0"
@@ -8310,7 +8342,7 @@ is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
 
 is-png@^1.0.0:
   version "1.1.0"
-  resolved "http://npm.6tiantian.com:4873/is-png/-/is-png-1.1.0.tgz#d574b12bf275c0350455570b0e5b57ab062077ce"
+  resolved "https://registry.npm.taobao.org/is-png/download/is-png-1.1.0.tgz#d574b12bf275c0350455570b0e5b57ab062077ce"
   integrity sha1-1XSxK/J1wDUEVVcLDltXqwYgd84=
 
 is-promise@^2.1.0:
@@ -10828,7 +10860,7 @@ optionator@^0.8.3:
 
 optipng-bin@^5.0.0:
   version "5.1.0"
-  resolved "http://npm.6tiantian.com:4873/optipng-bin/-/optipng-bin-5.1.0.tgz#a7c7ab600a3ab5a177dae2f94c2d800aa386b5a9"
+  resolved "https://registry.npm.taobao.org/optipng-bin/download/optipng-bin-5.1.0.tgz#a7c7ab600a3ab5a177dae2f94c2d800aa386b5a9"
   integrity sha1-p8erYAo6taF32uL5TC2ACqOGtak=
   dependencies:
     bin-build "^3.0.0"
@@ -11023,7 +11055,7 @@ p-map@^2.0.0:
 
 p-pipe@^1.1.0:
   version "1.2.0"
-  resolved "http://npm.6tiantian.com:4873/p-pipe/-/p-pipe-1.2.0.tgz#4b1a11399a11520a67790ee5a0c1d5881d6befe9"
+  resolved "https://registry.npm.taobao.org/p-pipe/download/p-pipe-1.2.0.tgz#4b1a11399a11520a67790ee5a0c1d5881d6befe9"
   integrity sha1-SxoROZoRUgpneQ7loMHViB1r7+k=
 
 p-reduce@^1.0.0:

@@ -2,8 +2,7 @@ import {createHashHistory} from "history";
 import React from "react";
 import {Cover} from "../views/cover";
 import {Home} from "../views/home";
-import {List} from "../views/list";
-import {Map} from "../views/map";
+import {PlantsMap} from "../views/map";
 import {VRView} from "../views/vrView";
 import {PlantCard} from "../views/plantCard";
 
@@ -21,23 +20,18 @@ export const routes = [
   {
     path: "/list",
     exact: true,
-    component: List,
+    component: PlantCard,
   },
   {
     path: "/map",
     exact: true,
-    component: Map,
+    component: PlantsMap,
   },
   {
     path: "/vr",
     exact: true,
     component: VRView,
   },
-  {
-    path: "/plant-card",
-    exact: true,
-    component: PlantCard
-  }
 ];
 
 export const appHistory = createHashHistory();
