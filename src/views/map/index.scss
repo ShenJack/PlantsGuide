@@ -23,6 +23,29 @@
     }
   }
 
+  .icon-wrapper {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: white;
+    transition: all 100ms;
+    &:hover{
+      background: whitesmoke;
+    }
+    border: 1px solid #000000;
+    line-height: 24px;
+    border-radius: 15px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+
+    }
+  }
+
   .title {
     margin-top: 200px;
     font-size: 25px;
