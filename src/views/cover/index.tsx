@@ -6,23 +6,31 @@ import {appHistory} from "../../router";
 export function Cover() {
   return (
     <div className="cover">
-      <div className="title">北京林业大学 校园植物导览</div>
-      <div className="button">
-        <Button
-          onClick={() => {
-            appHistory.push("/list");
-          }}>
-          植物列表
-        </Button>
-      </div>
 
-      <div className="button">
-        <Button
-          onClick={() => {
-            appHistory.push("/map");
-          }}>
-          植物地图
-        </Button>
+      <div className="description">
+        <div className="title">
+          校园植物导览
+        </div>
+        <p></p>
+      </div>
+      <div className="banners">
+        <div className="banner">
+          <Button
+            onClick={() => {
+              appHistory.push("/list");
+            }}>
+            植物列表
+          </Button>
+        </div>
+
+        <div className="banner">
+          <Button
+            onClick={() => {
+              appHistory.push("/map");
+            }}>
+            植物地图
+          </Button>
+        </div>
       </div>
     </div>
   );

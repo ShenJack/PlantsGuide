@@ -1,9 +1,18 @@
 import React from "react";
 import './index.scss';
 
-export function LikeButton() {
+
+export function LikeButton(props) {
   return(
-    <button className="like-button">
+    <button className="like-button" onClick={()=>{
+      if (props.user.like){
+        document.getElementsByClassName('icon')[0].classList.add('active');
+        props.user.like = !props.user.like;
+      } else {
+        document.getElementsByClassName('icon')[0].classList.remove('active');
+        props.user.like = !props.user.like;
+      }
+    }}>
       <svg className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
            p-id="4258" width="40" height="40">
         <path
