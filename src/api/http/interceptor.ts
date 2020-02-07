@@ -1,17 +1,17 @@
 import {AxiosRequestConfig, AxiosResponse} from "axios";
 
 export function onRequestSuccess(request: AxiosRequestConfig):AxiosRequestConfig {
-  return undefined;
+  return request;
 }
 
 export function onRequestFail(request: AxiosRequestConfig):AxiosRequestConfig {
-  return undefined;
+  return request;
 }
 
 export function onResponseSuccess(response: AxiosResponse):AxiosResponse {
-  return undefined;
+  return response;
 }
 
 export function onResponseFail(response: AxiosResponse):AxiosResponse {
-  return undefined;
+  return response;
 }

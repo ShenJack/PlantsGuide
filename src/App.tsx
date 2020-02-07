@@ -1,7 +1,5 @@
-// @flow
-import React, {useState} from "react";
+import React from "react";
 import "antd/dist/antd.css";
-
 import "./App.scss";
 import {appHistory, routes} from "./router";
 import {Route, Router, Switch} from "react-router-dom";
