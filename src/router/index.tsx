@@ -6,6 +6,7 @@ import {List} from "../views/list";
 import {PlantsMap} from "../views/map";
 import {VRView} from "../views/vrView";
 import {PlantCard} from "../views/plantCard";
+import {Menu} from "../views/menu";
 
 export const routes = [
   {
@@ -38,6 +39,11 @@ export const routes = [
     exact: true,
     component: PlantCard
   },
+  {
+    path: "/menu",
+    exact: true,
+    component: Menu
+  }
 ];
 
 export const appHistory = createHashHistory();

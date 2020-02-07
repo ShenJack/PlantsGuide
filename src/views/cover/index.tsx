@@ -6,7 +6,6 @@ import {appHistory} from "../../router";
 export function Cover() {
   return (
     <div className="cover">
-
       <div className="description">
         <div className="title">
           校园植物导览
