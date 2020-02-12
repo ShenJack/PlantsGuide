@@ -1,0 +1,42 @@
+.plants-list{
+  .plant-item{
+    display: flex;
+    flex-direction: row;
+    height: 8rem;
+    width: 100%;
+    //margin-top: 0.2rem;
+    border-bottom: 0.1rem dashed grey;
+    background-color: #f6f6f6;
+
+    .brief-plant-card{
+      display: flex;
+      flex-direction: row;
+      font-family: "Microsoft YaHei";
+      width: 80%;
+      padding-left: 2rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      //border-right: 0.1rem dashed grey;
+      transition: 0.25s linear;
+
+      .plant-img{
+        height: 6rem;
+        width: 6rem;
+      }
+      .plant-description{
+        height: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+    }
+    //.brief-plant-card:hover{
+    //  transform: scale(1.05,1.05);
+    //  box-shadow: #9ea7aa;
+    //}
+  }
+  //.plant-item:hover{
+  //
+  //  box-shadow: #9ea7aa;
+  //}
+}

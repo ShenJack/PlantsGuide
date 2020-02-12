@@ -13,7 +13,7 @@ export const routes = [
   {
     path: "/",
     exact: true,
-    component: Cover,
+    component: Home,
   },
   {
     path: "/home",

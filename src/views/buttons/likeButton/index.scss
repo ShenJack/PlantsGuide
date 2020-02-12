@@ -1,15 +1,15 @@
 .like-button{
-  height: 3rem;
-  width: 3rem;
+  height: 1.5rem;
+  width: 1.5rem;
   .icon{
     margin: auto;
-    transition: 0.55s ease-in-out;
+    transition: 0.25s ease-in-out;
   }
-  .icon:active{
+  .like-button-icon:active{
     transform: scale(0.9);
   }
   .active{
-    transition: 0.55s;
+    transition: 0.25s;
     fill:rgb(229, 64, 79);
   }
 }
