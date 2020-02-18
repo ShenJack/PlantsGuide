@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 import {PlantsList} from "../plantsList";
-import {Cover} from "../cover";
+import {BackButton} from "../buttons/backButton";
 
 export function List() {
   let plants = Array(10)
@@ -13,8 +13,10 @@ export function List() {
   }
   return (
     <div className="list">
-      {/*<Cover />*/}
       <div className="title">
+        <div className="back">
+          <BackButton backHistory="menu" />
+        </div>
         <div className="header">
           <div className="header-icon">
             <svg className="icon" viewBox="0 0 1024 1024" version="1.1"

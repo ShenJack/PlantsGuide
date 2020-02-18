@@ -30,13 +30,23 @@
         padding-left: 1.5rem;
       }
     }
-    //.brief-plant-card:hover{
-    //  transform: scale(1.05,1.05);
-    //  box-shadow: #9ea7aa;
-    //}
+    .plant-more{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      button svg{
+        height: 2rem;
+        width: 2rem;
+      }
+      .like{
+        padding-top: 0.5rem;
+      }
+    }
+    .plant-vr{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      text-align: center;
+    }
   }
-  //.plant-item:hover{
-  //
-  //  box-shadow: #9ea7aa;
-  //}
 }

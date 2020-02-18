@@ -1,8 +1,8 @@
 .like-button{
-  height: 1.5rem;
-  width: 1.5rem;
+  height: auto;
+  width: auto;
   .icon{
-    margin: auto;
+    //margin: auto;
     transition: 0.25s ease-in-out;
   }
   .like-button-icon:active{

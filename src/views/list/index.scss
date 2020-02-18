@@ -13,6 +13,13 @@
     padding-top: 2rem;
     padding-bottom: 0.5rem;
     text-align: center;
+    .back{
+      position: absolute;
+      top: 0.25rem;
+      left: 0.35rem;
+      height: 3rem;
+      width: 3rem;
+    }
     .header {
       line-height: 3rem;
       font-size: 1.5rem;
