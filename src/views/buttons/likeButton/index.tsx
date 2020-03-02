@@ -3,12 +3,14 @@ import './index.scss';
 
 interface User {
 
+  onClick(): void;
 }
 
 export function LikeButton(props: User) {
   let like = false;
   return(
     <button className="like-button" onClick={()=>{
+      props.onClick();
       if (like){
         document.getElementById('like-button-icon').classList.add('active');
         like = !like;

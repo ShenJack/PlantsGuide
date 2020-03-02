@@ -37,7 +37,7 @@ export const routes = [
   },
   {
     path: "/plant-card",
-    exact: true,
+    exact: false,
     component: PlantCard
   },
   {

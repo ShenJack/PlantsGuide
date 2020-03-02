@@ -12,6 +12,15 @@ export function apiDeletePlant(id) {
   return httpClient.delete(`/plant/${id}`)
 }
 
-export function apiGetPlants() {
-  return httpClient.get(`/plant/list`)
+export function apiGetPlants(skip: number = 0, limit: number = 5) {
+  return httpClient.get(`/plant/list`, {
+    params: {
+      skip,
+      limit,
+    }
+  })
+}
+
+export function apiLikePlant(plantId:string) {
+  return httpClient.post(`/plant/${plantId}/like`)
 }

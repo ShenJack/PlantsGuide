@@ -18,27 +18,30 @@ export function PlantsList(props: ListProps) {
   );
 }
 
+function doLike(_id: string) {
+//todo
+}
+
 function PlantItem(props: Plant) {
-  let plantImg = require("../../assets/plants/pc_01.jpeg")
   return <div className="plant-item">
     <div className="brief-plant-card">
 
       <div className="plant-img">
-        <img src={plantImg} />
+        <img src={props.coverUrl}/>
       </div>
       <div className="plant-description">
         <div className="plant-name">
-          中文名：梅花
+          中文名：{props.name}
         </div>
         <div className="plant-english-name">
-          英文名：plum
+          英文名：{props.nameEn}
         </div>
         <div className="plant-more">
-          <button onClick={(id) => appHistory.push("/plant-card")}>
+          <button onClick={(id) => appHistory.push(`/plant-card/${props._id}`)}>
             <PlantIcon/>
           </button>
           <div className="like">
-            <LikeButton  />
+            <LikeButton onClick={() => doLike(props._id)}/>
           </div>
         </div>
       </div>
