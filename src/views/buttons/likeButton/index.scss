@@ -1,15 +1,28 @@
 .like-button{
   height: auto;
   width: auto;
-  .icon{
-    //margin: auto;
-    transition: 0.25s ease-in-out;
+  display: flex;
+  align-items: center;
+
+  .button {
+    .icon {
+      //margin: auto;
+      transition: 0.25s ease-in-out;
+    }
+
+    .like-button-icon:active {
+      transform: scale(0.9);
+    }
+
+    .active {
+      transition: 250ms all;
+      fill: rgb(229, 64, 79);
+    }
   }
-  .like-button-icon:active{
-    transform: scale(0.9);
+
+  .like-count {
+    margin-left: 5px;
   }
-  .active{
-    transition: 0.25s;
-    fill:rgb(229, 64, 79);
-  }
+
+
 }

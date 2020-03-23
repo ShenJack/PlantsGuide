@@ -7,7 +7,8 @@ import {PlantsMap} from "../views/map";
 import {VRView} from "../views/vrView";
 import {PlantCard} from "../views/plantCard";
 import {Menu} from "../views/menu";
-import {AdminForms} from "../views/adminForms";
+import {AdminFormsUpdate} from "../views/adminForms/updateForm";
+import {AdminFormsCreate} from "../views/adminForms/createForm";
 
 export const routes = [
   {
@@ -46,9 +47,14 @@ export const routes = [
     component: Menu
   },
   {
-    path: "/admin/forms",
+    path: "/admin/forms/create",
     exact: true,
-    component: AdminForms
+    component: AdminFormsCreate
+  },
+  {
+    path: "/admin/forms/update",
+    exact: true,
+    component: AdminFormsUpdate
   }
 ];
 

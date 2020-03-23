@@ -3,21 +3,31 @@ import "./index.scss";
 import {PlantsList} from "../plantsList";
 import {BackButton} from "../buttons/backButton";
 import {HeaderIcon} from "../plantsList/headerIcon";
-import {apiGetPlants} from "../../api/plant";
+import {fetchPlants, isPlantLiked, PlantStore} from "../../store/plants";
+import {useStore} from "../../store";
+import {STORES} from "../../store/const";
 
 function search() {
   return;
 }
 
+
 export function List() {
-  let [plants, setPlants] = useState([]);
+  let [plantStore, dispatch] = useStore(STORES.PLANT_STORE);
   let inputed = false;
 
+
+  let [likedPlants, setLikedPlants] = useStore(STORES.PLANT_STORE);
+
   useEffect(() => {
-    apiGetPlants().then(res => {
-      setPlants(res.data.plants)
-    })
+    fetchPlants()
   }, []);
+
+
+  plantStore.plants.forEach(item => {
+    console.log('liked ' + isPlantLiked(item._id))
+    item.liked = isPlantLiked(item._id)
+  })
 
   return (
     <div className="list">
@@ -52,7 +62,10 @@ export function List() {
           </div>
       </div>
       <div className="plants">
-        <PlantsList plants={plants}/>
+        <PlantsList plants={plantStore.plants}/>
+      </div>
+      <div className="load-more" onClick={PlantStore.loadNextPage}>
+        加载更多
       </div>
     </div>
   );

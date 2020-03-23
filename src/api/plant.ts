@@ -24,3 +24,8 @@ export function apiGetPlants(skip: number = 0, limit: number = 5) {
 export function apiLikePlant(plantId:string) {
   return httpClient.post(`/plant/${plantId}/like`)
 }
+
+export function apiCancelLike(plantId:string) {
+  return httpClient.post(`/plant/${plantId}/like/cancel`)
+}
+

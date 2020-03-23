@@ -39,3 +39,29 @@ code {
   height: 100%;
   position: absolute;
 }
+
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+
+  .loading-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    transition: 200ms opacity;
+
+    &.loading {
+      transform: scale(1.5);
+    }
+  }
+
+
+}

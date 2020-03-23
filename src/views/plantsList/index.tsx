@@ -5,6 +5,7 @@ import {appHistory} from "../../router";
 import {LikeButton} from "../buttons/likeButton"
 import {PlantIcon} from "./plantIcon";
 import {VrIcon} from "./vrIcon";
+import {toggleLike} from "../../store/plants";
 
 interface ListProps {
   plants: Plant[];
@@ -16,10 +17,6 @@ export function PlantsList(props: ListProps) {
       {props.plants.map(item => PlantItem(item))}
     </div>
   );
-}
-
-function doLike(_id: string) {
-//todo
 }
 
 function PlantItem(props: Plant) {
@@ -41,14 +38,14 @@ function PlantItem(props: Plant) {
             <PlantIcon/>
           </button>
           <div className="like">
-            <LikeButton onClick={() => doLike(props._id)}/>
+            <LikeButton liked={props.liked} onClick={() => toggleLike(props._id)} likes={props.likes}/>
           </div>
         </div>
       </div>
     </div>
-    <div className="plant-vr" onClick={() => appHistory.push('/vr')}>
+    {props.vrUrl != null && <div className="plant-vr" onClick={() => appHistory.push('/vr')}>
       <VrIcon/>
       <p>全景图</p>
-    </div>
+    </div>}
   </div>;
 }

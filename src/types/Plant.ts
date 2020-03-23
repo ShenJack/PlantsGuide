@@ -8,4 +8,6 @@ export interface Plant {
   coverUrl: string,
   vrUrl: string,
   likes: number,
+
+  liked:boolean,
 }
