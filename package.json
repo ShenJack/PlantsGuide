@@ -21,7 +21,7 @@
     "http-status": "^1.4.0",
     "ip": "1.1.5",
     "lodash": "4.17.11",
-    "minimist": "1.2.0",
+    "minimist": "1.2.3",
     "moment": "^2.24.0",
     "passport-github": "^1.1.0",
     "react": "^16.10.2",
