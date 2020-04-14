@@ -4,10 +4,13 @@ import {listenersMap, reducerMap, stateMap, STORES} from "./const";
 import {getDispatch} from "./dispatches";
 
 let appState = {
-  loading: false
-}
+  loading: false,
+  bottomSheetContent: undefined,
+  bottomSheetContentType: undefined,
+  bottomSheetOpened: false,
+};
 
-stateMap.set(STORES.APP_STORE, appState)
+stateMap.set(STORES.APP_STORE, appState);
 PlantStore.initialize(stateMap, reducerMap);
 
 export function useStore(store) {
@@ -29,4 +32,3 @@ export function useStore(store) {
   }, [newListener, store]);
   return [stateMap.get(store), getDispatch(store)];
 }
-

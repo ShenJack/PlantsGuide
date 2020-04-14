@@ -1,4 +1,4 @@
-import {Button, Form, Icon, Input, message, Upload} from 'antd';
+import {Button, Form, Icon, Input, message, Select, Upload} from 'antd';
 import {WrappedFormUtils} from "antd/es/form/Form";
 import React from 'react'
 import {apiUploadImage} from "../api/upload";
@@ -6,14 +6,15 @@ import './index.scss'
 
 interface Props {
   form: WrappedFormUtils
-  formDetail: { [key: string]: FormTypes }
+  formDetail: any
   onConfirm: Function
   title: string,
 }
 
 export enum FormTypes {
   TYPE_INPUT,
-  TYPE_UPLOAD
+  TYPE_UPLOAD,
+  TYPE_SELECT,
 }
 
 
@@ -25,23 +26,36 @@ const uploadButton = (
 );
 
 const Wrapper = (props) => {
-  let key = (props as any)['data-__field'].name
-  let type = props.that.props.formDetail[key]
+  let key = (props as any)['data-__field'].name;
+  console.log(props.that.props.formDetail[key].list)
+  let type = props.that.props.formDetail[key].type;
   return <div>
     {type === FormTypes.TYPE_INPUT && <Input value={props.value} onChange={props.onChange} placeholder={key}/>}
     {type === FormTypes.TYPE_UPLOAD &&
-    <Upload className={'form-upload'} showUploadList={false} customRequest={options => {
-      const form = new FormData();
-      form.append("image", options.file);
-      apiUploadImage(form).then(res => {
-        props.that.props.form.setFieldsValue({
-          [key]: res.data.url,
+    <div className="img-upload">
+      <Upload className={'form-upload'} showUploadList={false} customRequest={options => {
+        const form = new FormData();
+        form.append("image", options.file);
+        apiUploadImage(form).then(res => {
+          props.that.props.form.setFieldsValue({
+            [key]: res.data.url,
+          });
+          message.success("上传成功");
         });
-        message.success("上传成功");
-      });
-    }}>
-      {props.value ? <img src={props.value as string} alt="avatar" style={{width: '100%'}}/> : uploadButton}
-    </Upload>}
+      }}>
+        {props.value ? <img src={props.value as string} alt="avatar" style={{width: '100%'}}/> : uploadButton}
+      </Upload>
+      或
+      <Input value={props.value} onChange={props.onChange} placeholder={key}/>
+    </div>}
+    {type === FormTypes.TYPE_SELECT &&
+    <Select defaultValue={props.value} style={{width: 120}} onChange={props.onChange}>
+      {(props.that.props.formDetail[key].list || []).map(item => <Select.Option key={item.key}
+                                                                                value={item.key}>{item.value}</Select.Option>)}
+    </Select>
+    }
+
+
   </div>
 }
 

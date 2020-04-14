@@ -7,6 +7,7 @@ import {AnimatedSwitch} from "./component/animatedSwitch";
 import {Spin} from "antd";
 import {useStore} from "./store";
 import {STORES} from "./store/const";
+import {BottomSheet} from "./component/bottomSheet";
 
 export function App() {
   return (
@@ -25,6 +26,9 @@ export function App() {
       </Router>
       <div className="loading-wrapper">
         <Loading/>
+      </div>
+      <div id="bottom-sheet-container">
+        <BottomSheet/>
       </div>
     </div>
   );

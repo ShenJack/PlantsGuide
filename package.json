@@ -24,6 +24,7 @@
     "history": "^4.10.1",
     "html-to-react": "^1.4.2",
     "http-status": "^1.4.0",
+    "immutable": "^4.0.0-rc.12",
     "ip": "1.1.5",
     "lodash": "4.17.11",
     "minimist": "1.2.0",

@@ -4,7 +4,15 @@ import anime from "animejs";
 import {IconButton} from "../../component/iconButton";
 import {appHistory} from "../../router";
 import {fakeData, icons} from "./fakeData";
-import {CustomOverlay, PlantsType} from "./customOverlay";
+// @ts-ignore
+import {CustomOverlay, PlantsType} from "./customOverlay.tsx";
+import {Button, Modal} from "antd";
+import {BottomSheet} from "../../component/bottomSheet";
+import {getState} from "../../store/plants";
+import {STORES} from "../../store/const";
+import {AdminFormCreatePlantInstance} from "../adminForms/adminCreatePlantInstance";
+
+const TYPE_ADMIN_FORM_CREATE_PLANT_INSTANCE = Symbol();
 
 const qq = (global as any).qq;
 
@@ -19,6 +27,31 @@ const data = [
 
 function onMarkClick(mark) {
 
+}
+
+function drawItem(item) {
+  let map = (window as any).map;
+  const position = new qq.maps.LatLng(item.lat, item.lng);
+  // let marker = new qq.maps.Marker({
+  //   position: position,
+  //   map: map
+  // });
+  let overlay = new CustomOverlay(position, <Button/>,
+    [PlantsType.TYPE_GRASS, PlantsType.TYPE_FLOWER, PlantsType.TYPE_TREE][Math.floor(Math.random() * 3)],
+    (mark) => {
+      onMarkClick(mark)
+    });
+  overlay.setMap(map);
+
+  const watchId = navigator.geolocation.watchPosition(console.log, console.log, {enableHighAccuracy: true});
+
+  return () => {
+    navigator.geolocation.clearWatch(watchId);
+  }
+}
+
+function createPlantInstance(param: { lng: any; lat: any }) {
+  BottomSheet.open(<AdminFormCreatePlantInstance preset={param}/>, TYPE_ADMIN_FORM_CREATE_PLANT_INSTANCE);
 }
 
 export function PlantsMap(props) {
@@ -40,57 +73,47 @@ export function PlantsMap(props) {
       (mapLogo as any).style.display = "none";
     }
 
+    let prevPoint;
+
     qq.maps.event.addListener(
       map,
       'click',
       function (event) {
-        console.log(event.latLng.getLat() +
-          ',' + event.latLng.getLng());
+        if (prevPoint) {
+          prevPoint.destroy();
+        }
+        const position = new qq.maps.LatLng(event.latLng.getLat(), event.latLng.getLng());
+        let overlay = new CustomOverlay(position, <Button onClick={() => createPlantInstance({
+            lat: event.latLng.getLat(), lng: event.latLng.getLng()
+          })}>添加植株</Button>,
+          [PlantsType.TYPE_GRASS, PlantsType.TYPE_FLOWER, PlantsType.TYPE_TREE][Math.floor(Math.random() * 3)],
+          (mark) => {
+            console.log(event.latLng.getLat() +
+              ',' + event.latLng.getLng());
+            onMarkClick(mark)
+          });
+        prevPoint = overlay;
+        overlay.setMap(map);
       }
     );
 
-    fakeData.forEach(item => {
-      const position = new qq.maps.LatLng(item.lat, item.lng);
-      // let marker = new qq.maps.Marker({
-      //   position: position,
-      //   map: map
-      // });
-      let overlay = new CustomOverlay(position,
-        [PlantsType.TYPE_GRASS, PlantsType.TYPE_FLOWER, PlantsType.TYPE_TREE][Math.floor(Math.random() * 3)],
-        (mark) => {
-          onMarkClick(mark)
-        });
-      overlay.setMap(map);
-      var anchor = new qq.maps.Point(10, 10),
-        size = new qq.maps.Size(20, 20),
-        scaleSize = new qq.maps.Size(20, 20),
-        origin = new qq.maps.Point(10, 10),
-        markerIcon = new qq.maps.MarkerImage(
-          icons[Math.floor(Math.random() * icons.length)],
-          null,
-          null,
-          null,
-          scaleSize
-        );
-      // marker.setIcon(markerIcon);
-
-      const watchId = navigator.geolocation.watchPosition(console.log, console.log, {enableHighAccuracy: true});
-
-      return () => {
-        navigator.geolocation.clearWatch(watchId);
-      }
-    })
+    fakeData.forEach(drawItem);
 
   }, []);
 
   const back = function () {
-    anime({
-      targets: BackButton.current,
-      scale: 0,
-      duration:100,
-    }).finished.then(() => {
-      appHistory.push("/")
-    })
+    let appState = getState(STORES.APP_STORE);
+    if (appState.bottomSheetContentType === TYPE_ADMIN_FORM_CREATE_PLANT_INSTANCE && appState.bottomSheetOpened) {
+      BottomSheet.close()
+    } else {
+      anime({
+        targets: BackButton.current,
+        scale: 0,
+        duration: 100,
+      }).finished.then(() => {
+        appHistory.push("/")
+      })
+    }
   }
   return (
     <div className="map-page">
