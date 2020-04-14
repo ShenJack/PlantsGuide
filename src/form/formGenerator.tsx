@@ -27,7 +27,9 @@ const uploadButton = (
 
 const Wrapper = (props) => {
   let key = (props as any)['data-__field'].name;
-  console.log(props.that.props.formDetail[key].list)
+  if (key === 'plantId') {
+    console.log(props.that.props.formDetail[key].list)
+  }
   let type = props.that.props.formDetail[key].type;
   return <div>
     {type === FormTypes.TYPE_INPUT && <Input value={props.value} onChange={props.onChange} placeholder={key}/>}
