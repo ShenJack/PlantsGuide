@@ -9,6 +9,7 @@ interface Props {
   formDetail: any
   onConfirm: Function
   title: string,
+  preset?: any,
 }
 
 export enum FormTypes {
@@ -104,4 +105,15 @@ class formGenerator extends React.Component<Props> {
   }
 }
 
-export const FormGenerator = Form.create<Props>({name: 'normal_login'})(formGenerator);
+export const FormGenerator = Form.create<Props>({
+  name: 'form_generator',
+  mapPropsToFields: props => {
+    const result = {};
+    Object.keys(props.preset).forEach(key => {
+      result[key] = Form.createFormField({
+        value: props.preset[key],
+      });
+    });
+    return result;
+  }
+})(formGenerator);

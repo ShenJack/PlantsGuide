@@ -11,6 +11,7 @@ import {BottomSheet} from "../../component/bottomSheet";
 import {getState} from "../../store/plants";
 import {STORES} from "../../store/const";
 import {AdminFormCreatePlantInstance} from "../adminForms/adminCreatePlantInstance";
+import {apiGetAllPlantInstance, apiGetAllPlants} from "../../api/plant";
 
 const TYPE_ADMIN_FORM_CREATE_PLANT_INSTANCE = Symbol();
 
@@ -83,13 +84,13 @@ export function PlantsMap(props) {
           prevPoint.destroy();
         }
         const position = new qq.maps.LatLng(event.latLng.getLat(), event.latLng.getLng());
-        let overlay = new CustomOverlay(position, <Button onClick={() => createPlantInstance({
-            lat: event.latLng.getLat(), lng: event.latLng.getLng()
-          })}>添加植株</Button>,
+        let overlay = new CustomOverlay(position, <Button onClick={() => {
+            createPlantInstance({
+              lat: event.latLng.getLat(), lng: event.latLng.getLng()
+            });
+          }}>添加植株</Button>,
           [PlantsType.TYPE_GRASS, PlantsType.TYPE_FLOWER, PlantsType.TYPE_TREE][Math.floor(Math.random() * 3)],
           (mark) => {
-            console.log(event.latLng.getLat() +
-              ',' + event.latLng.getLng());
             onMarkClick(mark)
           });
         prevPoint = overlay;
@@ -97,7 +98,9 @@ export function PlantsMap(props) {
       }
     );
 
-    fakeData.forEach(drawItem);
+    apiGetAllPlantInstance().then(res=>{
+      res.data.plantInstances.forEach(drawItem)
+    });
 
   }, []);
 

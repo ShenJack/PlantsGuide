@@ -38,6 +38,15 @@ export function apiGetAllPlants() {
   })
 }
 
+export function apiGetAllPlantInstance() {
+  return httpClient.get(`/plantInstance/list`, {
+    params: {
+      skip: 0,
+      limit: 10000,
+    }
+  })
+}
+
 export function apiLikePlant(plantId: string) {
   return httpClient.post(`/plant/${plantId}/like`)
 }

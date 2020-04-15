@@ -8,7 +8,7 @@ const formUpdatePlantInstance = {
   plantId: {type: FormTypes.TYPE_SELECT},
 
   coverUrl: {type: FormTypes.TYPE_UPLOAD},
-  vrUrl: {type: FormTypes.TYPE_INPUT},
+  vrUrl: {type: FormTypes.TYPE_UPLOAD},
 
   lat: {type: FormTypes.TYPE_INPUT},
   lng: {type: FormTypes.TYPE_INPUT},
@@ -19,9 +19,6 @@ interface Props {
 }
 
 export function AdminFormsUpdatePlantInstance(props: Props) {
-  // useEffect(() => {
-  //
-  // }, [props.plantId])
   return <div className="admin-forms">
     <FormGenerator title={'更新植物'} formDetail={formUpdatePlantInstance} onConfirm={values => {
       const id = values.id;
