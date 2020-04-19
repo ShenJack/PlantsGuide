@@ -15,44 +15,37 @@ export enum PlantsType {
   TYPE_GRASS
 }
 
-const qq = (window as any).qq;
-CustomOverlay.prototype = new qq.maps.Overlay();
-//定义construct,实现这个接口来初始化自定义的Dom元素
-CustomOverlay.prototype.construct = function () {
-  var icon = this.icon = document.createElement("i");
-  var div = this.div = document.createElement("div");
-  var iconStyle = this.icon.style;
-  var divStyle = this.div.style;
-
-  this.container = div;
-
-  div.classList.add('icon-wrapper')
-  icon.classList.add('icon')
-
-
-  //将dom添加到覆盖物层
-  var panes = this.getPanes();
-  //设置panes的层级，overlayMouseTarget可接收点击事件
-  panes.overlayMouseTarget.appendChild(div);
-  div.appendChild(icon)
-
-  var self = this;
-  this.icon.onclick = function () {
-  }
+export function PlantOverlay(center, component){
+  this._center = center;
+  this._map = undefined;
+  this._component = component;
 }
-//实现draw接口来绘制和更新自定义的dom元素
-CustomOverlay.prototype.draw = function () {
-  var overlayProjection = this.getProjection();
-  //返回覆盖物容器的相对像素坐标
-  var pixel = overlayProjection.fromLatLngToDivPixel(this.position);
-  var divStyle = this.div.style;
-  divStyle.left = pixel.x - 12 + "px";
-  divStyle.top = pixel.y - 12 + "px";
-  ReactDOM.render(this.component, this.icon)
+
+PlantOverlay.prototype = new ((window as any).BMap).Overlay();
+
+// 实现初始化方法
+PlantOverlay.prototype.initialize = function(map){
+  // 保存map对象实例
+  this._map = map;
+  // 创建div元素，作为自定义覆盖物的容器
+  var div = document.createElement("div");
+  div.style.position = "absolute";
+  // 可以根据参数设置元素外观
+  // 将div添加到覆盖物容器中
+  map.getPanes().markerPane.appendChild(div);
+  // 保存div实例
+  this._div = div;
+  // 需要将div元素作为方法的返回值，当调用该覆盖物的show、
+  // hide方法，或者对覆盖物进行移除时，API都将操作此元素。
+  return div;
 }
-//实现destroy接口来删除自定义的Dom元素，此方法会在setMap(null)后被调用
-CustomOverlay.prototype.destroy = function () {
-  this.div.onclick = null;
-  this.div.parentNode.removeChild(this.div);
-  this.div = null
+
+PlantOverlay.prototype.draw = function(){
+// 根据地理坐标转换为像素坐标，并设置给容器
+  var position = this._map.pointToOverlayPixel(this._center);
+  this._div.style.left = position.x + "px";
+  this._div.style.top = position.y + "px";
+  this._div.style.transform = "translate(-50%, -50%)";
+  this._div.onclick = this._onClick;
+  ReactDOM.render(this._component,this._div)
 }
