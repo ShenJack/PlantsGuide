@@ -9,15 +9,17 @@ export function PlantCard() {
   let animated = false;
   return (
     <div className="plant-card">
-        <img className="plant-card-img" src={img} onClick={() => {
-          if(animated == false){
-            document.getElementsByClassName("plant-card-img")[0].className += ' click';
-            animated = !animated;
-          } else {
-            document.getElementsByClassName("plant-card-img")[0].className = 'plant-card-img';
-            animated = !animated;
-          }
-        }} />
+        <img className="plant-card-img" src={img}
+             // onClick={() => {
+             //   if(animated == false){
+             //     document.getElementsByClassName("plant-card-img")[0].className += ' click';
+             //     animated = !animated;
+             //   } else {
+             //     document.getElementsByClassName("plant-card-img")[0].className = 'plant-card-img';
+             //     animated = !animated;
+             //   }
+             // }}
+        />
       <div className="plant-details">
         <TabsCard />
       </div>

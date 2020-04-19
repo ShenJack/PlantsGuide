@@ -109,11 +109,13 @@ export const FormGenerator = Form.create<Props>({
   name: 'form_generator',
   mapPropsToFields: props => {
     const result = {};
-    Object.keys(props.preset).forEach(key => {
-      result[key] = Form.createFormField({
-        value: props.preset[key],
+    if(props.preset){
+      Object.keys(props.preset).forEach(key => {
+        result[key] = Form.createFormField({
+          value: props.preset[key],
+        });
       });
-    });
+    }
     return result;
   }
 })(formGenerator);

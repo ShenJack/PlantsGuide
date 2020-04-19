@@ -12,7 +12,7 @@ interface Props {
 }
 
 export function AdminFormCreatePlantInstance(props: Props) {
-  let [formCreatPlant, setFormCreatePlant] = useState(fromJS({
+  let [formCreatePlant, setFormCreatePlant] = useState(fromJS({
       plantId: {
         type: FormTypes.TYPE_SELECT, list: []
       },
@@ -32,8 +32,8 @@ export function AdminFormCreatePlantInstance(props: Props) {
           value: item.name
         }
       });
-      let plantId = formCreatPlant.get('plantId').set('list',list)
-      let obj = formCreatPlant.set('plantId',plantId);
+      let plantId = formCreatePlant.get('plantId').set('list',list)
+      let obj = formCreatePlant.set('plantId',plantId);
       setFormCreatePlant(obj)
     })
   }, []);
@@ -44,7 +44,7 @@ export function AdminFormCreatePlantInstance(props: Props) {
         appHistory.push('/admin/forms/create')
       }}>新建植物</Button>
     </div>
-    <FormGenerator title={'新建植株'} formDetail={formCreatPlant.toJS()} preset={props.preset} onConfirm={values => {
+    <FormGenerator title={'新建植株'} formDetail={formCreatePlant.toJS()} preset={props.preset} onConfirm={values => {
       apiCreatePlantInstance(values).then(res => {
         message.success("创建成功")
       })

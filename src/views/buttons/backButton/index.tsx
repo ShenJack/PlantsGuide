@@ -2,10 +2,10 @@ import React from "react";
 import './index.scss';
 import {appHistory} from "../../../router";
 
-export function BackButton(backHistory) {
+export function BackButton(props) {
   return(
     <button className="back-button" onClick={()=>{
-      appHistory.push("/menu");
+      appHistory.push(props.backHistory);
     }}>
       <svg className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
            p-id="2973">
