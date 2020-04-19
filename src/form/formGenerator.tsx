@@ -35,8 +35,9 @@ const Wrapper = (props) => {
     console.log(props.that.props.formDetail[key].list)
   }
   let type = props.that.props.formDetail[key].type;
+  const placeholder = getKeyName(key);
   return <div>
-    {type === FormTypes.TYPE_INPUT && <Input value={props.value} onChange={props.onChange} placeholder={key}/>}
+    {type === FormTypes.TYPE_INPUT && <Input value={props.value} onChange={props.onChange} placeholder={placeholder}/>}
     {type === FormTypes.TYPE_UPLOAD &&
     <div className="img-upload">
       <Upload className={'form-upload'} showUploadList={false} customRequest={options => {
@@ -52,7 +53,7 @@ const Wrapper = (props) => {
         {props.value ? <img src={props.value as string} alt="avatar" style={{width: '100%'}}/> : uploadButton}
       </Upload>
       或URL
-      <Input value={props.value} onChange={props.onChange} placeholder={key}/>
+      <Input value={props.value} onChange={props.onChange} placeholder={placeholder}/>
     </div>}
     {type === FormTypes.TYPE_SELECT &&
     <Select defaultValue={props.value} style={{width: 120}} onChange={props.onChange}>
@@ -61,7 +62,7 @@ const Wrapper = (props) => {
     </Select>
     }
     {type === FormTypes.TYPE_TEXTAREA &&
-    <TextArea value={props.value} onChange={props.onChange} placeholder={key}/>}
+    <TextArea value={props.value} onChange={props.onChange} placeholder={placeholder}/>}
 
 
   </div>
@@ -103,7 +104,8 @@ class formGenerator extends React.Component<Props> {
           )}
         </Form.Item>)}
         <Form.Item>
-          <Button htmlType={'submit'}>Confirm</Button>
+          <Button type={"primary"} htmlType={'submit'}>确认</Button>
+          <Button style={{marginLeft:10}} onClick={() => this.props.form.resetFields()}>重置</Button>
         </Form.Item>
       </Form>
     );
