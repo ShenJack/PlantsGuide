@@ -6,10 +6,13 @@ import {Button, message} from "antd";
 
 const formCreatPlant = {
   name: {type: FormTypes.TYPE_INPUT},
-  origin: {type: FormTypes.TYPE_INPUT},
-  description: {type: FormTypes.TYPE_INPUT},
+  description: {type: FormTypes.TYPE_TEXTAREA},
   type: {type: FormTypes.TYPE_INPUT},
   coverUrl: {type: FormTypes.TYPE_UPLOAD},
+
+  family: {type: FormTypes.TYPE_INPUT},
+  genus: {type: FormTypes.TYPE_INPUT},
+
 }
 
 

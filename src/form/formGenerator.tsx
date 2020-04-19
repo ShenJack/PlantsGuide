@@ -3,6 +3,7 @@ import {WrappedFormUtils} from "antd/es/form/Form";
 import React from 'react'
 import {apiUploadImage} from "../api/upload";
 import './index.scss'
+import TextArea from "antd/es/input/TextArea";
 
 interface Props {
   form: WrappedFormUtils
@@ -16,6 +17,7 @@ export enum FormTypes {
   TYPE_INPUT,
   TYPE_UPLOAD,
   TYPE_SELECT,
+  TYPE_TEXTAREA,
 }
 
 
@@ -48,7 +50,7 @@ const Wrapper = (props) => {
       }}>
         {props.value ? <img src={props.value as string} alt="avatar" style={{width: '100%'}}/> : uploadButton}
       </Upload>
-      或
+      或URL
       <Input value={props.value} onChange={props.onChange} placeholder={key}/>
     </div>}
     {type === FormTypes.TYPE_SELECT &&
@@ -57,6 +59,8 @@ const Wrapper = (props) => {
                                                                                 value={item.key}>{item.value}</Select.Option>)}
     </Select>
     }
+    {type === FormTypes.TYPE_TEXTAREA &&
+    <TextArea value={props.value} onChange={props.onChange} placeholder={key}/>}
 
 
   </div>
