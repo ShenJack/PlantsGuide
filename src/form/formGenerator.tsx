@@ -4,6 +4,7 @@ import React from 'react'
 import {apiUploadImage} from "../api/upload";
 import './index.scss'
 import TextArea from "antd/es/input/TextArea";
+import {getKeyName} from "../utils/keyName";
 
 interface Props {
   form: WrappedFormUtils
@@ -92,11 +93,11 @@ class formGenerator extends React.Component<Props> {
   render() {
     const {getFieldDecorator} = this.props.form;
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+      <Form {...formItemLayout} layout={"horizontal"} onSubmit={this.handleSubmit}>
         <Form.Item>
           <h2 style={{fontSize: '2rem'}}>{this.props.title}</h2>
         </Form.Item>
-        {Object.entries(this.props.formDetail).map(([key, type]) => <Form.Item label={key}>
+        {Object.entries(this.props.formDetail).map(([key, type]) => <Form.Item label={getKeyName(key)}>
           {getFieldDecorator(key, {})(
             <Wrapper that={this}/>
           )}
