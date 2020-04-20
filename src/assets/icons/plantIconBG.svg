@@ -9,5 +9,8 @@
     <path stroke="#000" id="svg_12"
           d="m100,350l95,-218l-190,0l100,218z"
           fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#fff"/>
+<!--    <path stroke="#000" id="svg_12"-->
+<!--          d="m100,350l31,-70l-58,0l32,70z"-->
+<!--          fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="gray"/>-->
   </g>
 </svg>

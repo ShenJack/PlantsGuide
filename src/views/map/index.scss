@@ -31,14 +31,6 @@
     left: 11px;
 
     .plant-item {
-      &:active {
-        padding: 2px;
-        top: -56px;
-        left: -16px;
-        width: 64px;
-        height: 112px;
-      }
-
       display: flex;
       position: absolute;
       padding: 2px;
