@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import {FormGenerator, FormTypes} from "../../form/formGenerator";
 import './index.scss'
 import {apiCreatePlant} from "../../api/plant";
@@ -21,11 +21,13 @@ interface Props {
 }
 
 export function AdminFormCreatePlant(props: Props) {
+  const ref = useRef(undefined)
   return <div className="admin-forms">
 
-    <FormGenerator title={'新建植物'} formDetail={formCreatPlant} onConfirm={values => {
+    <FormGenerator ref={ref} title={'新建植物'} formDetail={formCreatPlant} onConfirm={values => {
       apiCreatePlant(values).then(res => {
         message.success("创建成功")
+        ref.current.resetFields();
       })
     }
     }/>
