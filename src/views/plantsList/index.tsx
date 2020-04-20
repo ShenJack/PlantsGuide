@@ -28,10 +28,7 @@ function PlantItem(props: Plant) {
       </div>
       <div className="plant-description">
         <div className="plant-name">
-          中文名：{props.name}
-        </div>
-        <div className="plant-english-name">
-          英文名：{props.nameEn}
+          植物名：{props.name}
         </div>
         <div className="plant-more">
           <button onClick={(id) => appHistory.push(`/plant-card/${props._id}`)}>
