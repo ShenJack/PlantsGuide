@@ -6,6 +6,9 @@ import {Button, message} from "antd";
 import {appHistory} from "../../router";
 import {BottomSheet} from "../../component/bottomSheet";
 import {fromJS} from 'immutable'
+import {getDispatch} from "../../store/dispatches";
+import {STORES} from "../../store/const";
+import {PlantStore} from "../../store/plants";
 
 interface Props {
   preset?: any
@@ -47,6 +50,8 @@ export function AdminFormCreatePlantInstance(props: Props) {
     <FormGenerator title={'新建植株'} formDetail={formCreatePlant.toJS()} preset={props.preset} onConfirm={values => {
       apiCreatePlantInstance(values).then(res => {
         message.success("创建成功")
+        BottomSheet.close();
+        PlantStore.loadPlantInstances();
       })
     }
     }/>

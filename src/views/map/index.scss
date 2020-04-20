@@ -23,15 +23,62 @@
     }
   }
 
+  .anchor {
+    width: 0px;
+    height: 0px;
+    position: relative;
+    top: 33px;
+    left: 11px;
+
+    .plant-item {
+      &:active {
+        padding: 2px;
+        top: -56px;
+        left: -16px;
+        width: 64px;
+        height: 112px;
+      }
+
+      display: flex;
+      position: absolute;
+      padding: 2px;
+      top: -56px;
+      left: -16px;
+      width: 32px;
+      height: 56px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("https://plants-guide.oss-cn-beijing.aliyuncs.com/plantIconBG.svg");
+      justify-content: center;
+
+      .icon {
+        box-shadow: #adb5bd 0 0 1px 1px;
+        width: 28px;
+        height: 28px;
+        border-radius: 15px;
+      }
+    }
+  }
+
+
+  .map-zoom-control {
+    bottom: 40px;
+    left: 20px;
+    position: absolute;
+    z-index: 2;
+  }
+
   .icon-wrapper {
     position: absolute;
     width: 24px;
     height: 24px;
     background: white;
     transition: all 100ms;
-    &:hover{
+
+    &:hover {
       background: whitesmoke;
     }
+
     border: 1px solid #000000;
     line-height: 24px;
     border-radius: 15px;

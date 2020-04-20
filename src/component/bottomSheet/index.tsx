@@ -1,4 +1,3 @@
-// @flow
 import React, {useEffect, useState} from 'react';
 import {useStore} from "../../store";
 import {STORES} from "../../store/const";
@@ -12,13 +11,12 @@ let tempTop: number;
 let startTop: number;
 
 export function BottomSheet(props) {
-  let [appStore, dispatch] = useStore(STORES.APP_STORE)
-  let [top, setTop] = useState(20)
+  let [appStore] = useStore(STORES.APP_STORE);
   useEffect(() => {
     if (appStore.bottomSheetOpened) {
       anime({
         targets: document.getElementById('bottom-sheet-container'),
-        top: '0',
+        top: '20%',
         easing: 'easeInOutCubic',
         duration: 200
       })
@@ -34,27 +32,32 @@ export function BottomSheet(props) {
   return (
     <div className={'bottom-sheet'}>
       <div className="snap-zone"
-           onTouchStart={(touchEvent) => {
+           onTouchStartCapture={(touchEvent) => {
+             touchEvent.preventDefault()
              const container = document.getElementById('bottom-sheet-container');
              startY = touchEvent.touches[0].clientY;
              startTop = container.offsetTop;
            }}
-           onTouchMove={(touchEvent) => {
+           onTouchMoveCapture={(touchEvent) => {
+             touchEvent.preventDefault()
              const container = document.getElementById('bottom-sheet-container');
              tempTop = touchEvent.touches[0].clientY - startY;
              if (startTop + tempTop >= 0) {
                container.style.top = startTop + tempTop + 'px';
              }
            }}
-           onTouchEnd={(touchEvent) => {
-             if (tempTop >= 0.8 * window.innerHeight) {
+           onTouchEndCapture={(touchEvent) => {
+             touchEvent.preventDefault()
+             if (startTop + tempTop >= 0.8 * window.innerHeight) {
                BottomSheet.close()
-             } else if (tempTop <= 0.2 * window.innerHeight) {
+             } else if (startTop + tempTop <= 0.2 * window.innerHeight) {
                BottomSheet.expand(100)
              }
            }}
       >
-        <i className="iconfont icon-drag"/></div>
+        <i className="iconfont icon-drag"/>
+        <i onClick={BottomSheet.close} className="iconfont icon-fold"/>
+      </div>
       <div className="sheet-content">
         {appStore.bottomSheetContent ? appStore.bottomSheetContent : ""}
       </div>
@@ -74,10 +77,22 @@ BottomSheet.expand = function (percent) {
   getDispatch(STORES.APP_STORE)({
     bottomSheetOpened: true,
   })
+  anime({
+    targets: document.getElementById('bottom-sheet-container'),
+    top: '0%',
+    easing: 'easeInOutCubic',
+    duration: 200
+  })
 }
 
 BottomSheet.close = function () {
   getDispatch(STORES.APP_STORE)({
     bottomSheetOpened: false
+  })
+  anime({
+    targets: document.getElementById('bottom-sheet-container'),
+    top: '100%',
+    easing: 'easeInOutCubic',
+    duration: 200
   })
 }

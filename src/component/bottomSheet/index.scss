@@ -4,9 +4,11 @@
   height: 100%;
   width: 100%;
   top: 100%;
+  z-index: 2;
 
   .bottom-sheet {
     height: 100%;
+
     .snap-zone {
       position: absolute;
       top: 0;
@@ -16,6 +18,12 @@
       align-items: center;
       justify-content: center;
       border-bottom: 1px #e6e6e6 solid;
+
+      .icon-fold {
+        font-weight: 900;
+        position: absolute;
+        right: 10px;
+      }
     }
     .sheet-content{
       overflow-y: scroll;

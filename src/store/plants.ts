@@ -1,9 +1,10 @@
-import {apiCancelLike, apiGetPlants, apiLikePlant} from "../api/plant";
+import {apiCancelLike, apiGetAllPlantInstance, apiGetPlants, apiLikePlant} from "../api/plant";
 import {getDispatch} from "./dispatches";
 import {stateMap, STORES} from "./const";
 
 let initialState = {
   likedPlantIds: loadPlantIds(),
+  plantInstances: [],
   plants: [],
   skip: 0,
   limit: 5,
@@ -17,6 +18,14 @@ function loadPlantIds() {
   } else {
     return []
   }
+}
+
+function loadPlantInstances() {
+  apiGetAllPlantInstance().then(res => {
+    getDispatch(STORES.PLANT_STORE)({
+      plantInstances: res.data.plantInstances
+    })
+  })
 }
 
 function persistPlantIds(data) {
@@ -76,8 +85,10 @@ export function isPlantLiked(id) {
 export const PlantStore = {
   initialize: (stateMap, reducerMap) => {
     stateMap.set(STORES.PLANT_STORE, initialState);
+    loadPlantInstances();
   },
-  loadNextPage
+  loadNextPage,
+  loadPlantInstances,
 }
 
 function loadNextPage() {
