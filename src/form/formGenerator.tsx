@@ -1,6 +1,6 @@
 import {Button, Form, Icon, Input, message, Select, Upload} from 'antd';
 import {WrappedFormUtils} from "antd/es/form/Form";
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import {apiUploadImage} from "../api/upload";
 import './index.scss'
 import TextArea from "antd/es/input/TextArea";
@@ -31,9 +31,6 @@ const uploadButton = (
 
 const Wrapper = (props) => {
   let key = (props as any)['data-__field'].name;
-  if (key === 'plantId') {
-    console.log(props.that.props.formDetail[key].list)
-  }
   let type = props.that.props.formDetail[key].type;
   const placeholder = getKeyName(key);
   return <div>
@@ -56,9 +53,10 @@ const Wrapper = (props) => {
       <Input value={props.value} onChange={props.onChange} placeholder={placeholder}/>
     </div>}
     {type === FormTypes.TYPE_SELECT &&
-    <Select defaultValue={props.value} style={{width: 120}} onChange={props.onChange}>
-      {(props.that.props.formDetail[key].list || []).map(item => <Select.Option key={item.key}
-                                                                                value={item.key}>{item.value}</Select.Option>)}
+    <Select showSearch optionFilterProp={'label'} defaultValue={props.value} style={{width: 120}}
+            onChange={props.onChange}>
+      {(props.that.props.formDetail[key].list || []).map(item => <Select.Option key={item.key} label={item.value}
+                                                      value={item.key}>{item.value}</Select.Option>)}
     </Select>
     }
     {type === FormTypes.TYPE_TEXTAREA &&
