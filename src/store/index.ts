@@ -17,7 +17,7 @@ export function useStore(store) {
   if (store === undefined) {
     store = STORES.APP_STORE;
   }
-  const newListener = useState()[1];
+  const newListener = useState()[1];//[state,dispatch] = useState(undefined)
   useEffect(() => {
     if (listenersMap.get(store) === undefined) {
       listenersMap.set(store, []);

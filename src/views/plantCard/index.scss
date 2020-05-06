@@ -8,13 +8,27 @@
   .plant-card-img{
     height: auto;
     width: 100%;
-    border-bottom-right-radius: 400px;
     transition: 0.2s;
   }
-  .click{
-    border-bottom-right-radius: 0;
-    transition: 0.2s;
-    transform: scale(0.95);
+  .plant-details{
+    margin-top: 1.5rem;
+    .plant-name{
+      font-size: 2rem;
+      text-align: center;
+      color: #125749;
+      font-weight: bolder;
+    }
+    .plant-description{
+      margin-top: 1.5rem;
+      width: 100%;
+      height: auto;
+      font-size: 1.3rem;
+      text-align: center;
+      padding-left: 1.2rem;
+      padding-right: 1.2rem;
+    }
+    .plant-instance{
+    }
   }
 }
 

@@ -5,10 +5,20 @@ import {appHistory} from "../../router";
 import {LikeButton} from "../buttons/likeButton"
 import {PlantIcon} from "./plantIcon";
 import {VrIcon} from "./vrIcon";
-import {toggleLike} from "../../store/plants";
+import {PlantStore, toggleLike} from "../../store/plants";
+import {getDispatch} from "../../store/dispatches";
+import {STORES} from "../../store/const";
 
 interface ListProps {
   plants: Plant[];
+}
+
+function gotoPlantCard(plant) {
+  // (id) => appHistory.push(`/plant-card/${props._id}`)
+  appHistory.push(`/plant-card/${plant._id}`)
+  getDispatch(STORES.PLANT_STORE)({
+    currentPlantDetail: plant
+  })
 }
 
 export function PlantsList(props: ListProps) {
@@ -31,7 +41,7 @@ function PlantItem(props: Plant) {
           植物名：{props.name}
         </div>
         <div className="plant-more">
-          <button onClick={(id) => appHistory.push(`/plant-card/${props._id}`)}>
+          <button onClick={() => gotoPlantCard(props)}>
             <PlantIcon/>
           </button>
           <div className="like">

@@ -38,7 +38,7 @@ function createPlantInstance(param: { lng: any; lat: any }) {
 }
 
 function openInstanceDetail(param: { lng: any; lat: any }) {
-  BottomSheet.open(<PlantCard/>, PlantCard);
+  BottomSheet.open(<PlantCard />, PlantCard);
 }
 
 export function PlantsMap(props) {

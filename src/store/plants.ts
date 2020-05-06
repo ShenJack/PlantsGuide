@@ -1,4 +1,10 @@
-import {apiCancelLike, apiGetAllPlantInstance, apiGetPlants, apiLikePlant} from "../api/plant";
+import {
+  apiCancelLike,
+  apiGetAllPlantInstance,
+  apiGetCertainPlantsInstance,
+  apiGetPlants,
+  apiLikePlant
+} from "../api/plant";
 import {getDispatch} from "./dispatches";
 import {stateMap, STORES} from "./const";
 
@@ -9,6 +15,8 @@ let initialState = {
   skip: 0,
   limit: 5,
   total: -1,
+
+  currentPlantDetail:undefined,
 };
 
 function loadPlantIds() {
@@ -28,6 +36,14 @@ function loadPlantInstances() {
   })
 }
 
+function loadPlantInstancesByPlantId(plantId) {
+  apiGetCertainPlantsInstance(plantId).then(res => {
+    getDispatch(STORES.PLANT_STORE)({
+      plantInstances: res.data.plantInstances
+    })
+  })
+}
+
 function persistPlantIds(data) {
   localStorage.setItem("LIKED_PLANTS", JSON.stringify(data))
 }
@@ -41,8 +57,8 @@ export function addLike(id) {
     const data = getState(STORES.PLANT_STORE).likedPlantIds.concat(id);
     getDispatch(STORES.PLANT_STORE)({
       likedPlantIds: data
-    })
-    fetchPlants()
+    });
+    fetchPlants();
     persistPlantIds(data);
   })
 }
@@ -52,8 +68,8 @@ export function removeLike(id) {
     const data = getState(STORES.PLANT_STORE).likedPlantIds.filter(item => item !== id);
     getDispatch(STORES.PLANT_STORE)({
       likedPlantIds: data
-    })
-    fetchPlants()
+    });
+    fetchPlants();
     persistPlantIds(data);
   })
 }
@@ -87,9 +103,10 @@ export const PlantStore = {
     stateMap.set(STORES.PLANT_STORE, initialState);
     loadPlantInstances();
   },
+  loadPlantInstancesByPlantId,
   loadNextPage,
   loadPlantInstances,
-}
+};
 
 function loadNextPage() {
   let tempSkip = getState(STORES.PLANT_STORE).skip + getState(STORES.PLANT_STORE).limit;

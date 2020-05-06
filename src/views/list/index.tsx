@@ -25,9 +25,9 @@ export function List() {
 
 
   plantStore.plants.forEach(item => {
-    console.log('liked ' + isPlantLiked(item._id))
+    console.log('liked ' + isPlantLiked(item._id));
     item.liked = isPlantLiked(item._id)
-  })
+  });
 
   return (
     <div className="list">

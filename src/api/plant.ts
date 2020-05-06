@@ -1,4 +1,5 @@
 import {httpClient} from "./http";
+import {config} from "rxjs";
 
 export function apiCreatePlant(data) {
   return httpClient.post('/plant/create', data)
@@ -34,6 +35,14 @@ export function apiGetAllPlants() {
     params: {
       skip: 0,
       limit: 10000,
+    }
+  })
+}
+
+export function apiGetCertainPlant(plantId) {
+  return httpClient.get(`/plant-card/` + plantId, {
+    params:{
+      id: plantId,
     }
   })
 }
