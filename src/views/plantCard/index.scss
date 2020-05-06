@@ -5,29 +5,105 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  .plant-card-img{
+
+  .back-button {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+  }
+
+  .plant-card-img {
     height: auto;
     width: 100%;
     transition: 0.2s;
   }
-  .plant-details{
+
+  .plant-details {
     margin-top: 1.5rem;
-    .plant-name{
+
+    .plant-name {
       font-size: 2rem;
       text-align: center;
       color: #125749;
       font-weight: bolder;
     }
-    .plant-description{
+    .plant-description {
       margin-top: 1.5rem;
       width: 100%;
       height: auto;
       font-size: 1.3rem;
       text-align: center;
-      padding-left: 1.2rem;
-      padding-right: 1.2rem;
+
+      .text {
+        padding-left: 1.2rem;
+        padding-right: 0.9rem;
+        text-align: left;
+        transition: 200ms;
+        overflow: hidden;
+      }
+
+      .icon-fold-wrapper {
+        font-weight: bold;
+        transition: 200ms;
+
+        .iconfont {
+          font-size: 20px;
+        }
+
+        &.fold {
+          transform: rotate(180deg);
+        }
+
+        &.expand {
+          transform: rotate(0deg);
+        }
+      }
     }
-    .plant-instance{
+
+    .instance-list {
+      .title {
+        font-size: 24px;
+        margin: 0 24px 20px;
+      }
+
+      margin: 10px 0;
+      //border-top: 1px solid lightgray;
+      padding: 24px 0px;
+
+      .plant-instance {
+        padding: 7px 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid lightgray;
+
+        transition: 100ms;
+
+        &:hover {
+          background: whitesmoke;
+        }
+
+        .instance-index {
+          border-radius: 50%;;
+          width: 2rem;
+          height: 2rem;
+          background: #ececec;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          font-family: PingFang SC, 'Microsoft YaHei', Arial, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+          font-weight: bold;
+        }
+
+        .goto-map {
+          transform: rotate(90deg);
+        }
+      }
+
+      .plant-instance:nth-last-child(1) {
+        border-bottom: unset;
+      }
     }
   }
 }
