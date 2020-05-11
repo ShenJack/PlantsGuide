@@ -4,7 +4,6 @@ import {STORES} from "../../store/const";
 import {getDispatch} from "../../store/dispatches";
 import './index.scss'
 import anime from "animejs";
-import {AdminFormCreatePlantInstance} from "../../views/adminForms/adminCreatePlantInstance";
 
 let lastY;
 let startY;
@@ -36,37 +35,39 @@ export function BottomSheet(props) {
 
   return (
     <div className={'bottom-sheet'}>
-      <div className="snap-zone"
-           onTouchStartCapture={(touchEvent) => {
-             touchEvent.preventDefault()
-             const container = document.getElementById('bottom-sheet-container');
-             startY = touchEvent.touches[0].clientY;
-             startTop = container.offsetTop;
-           }}
-           onTouchMoveCapture={(touchEvent) => {
-             touchEvent.preventDefault()
-             const container = document.getElementById('bottom-sheet-container');
-             tempTop = touchEvent.touches[0].clientY - startY;
-             if (startTop + tempTop >= 0) {
-               container.style.top = startTop + tempTop + 'px';
-             }
-           }}
-           onTouchEndCapture={(touchEvent) => {
-             touchEvent.preventDefault()
-             if (startTop + tempTop >= 0.6 * window.innerHeight) {
-               BottomSheet.close()
-             } else if (startTop + tempTop <= 0.3 * window.innerHeight) {
-               BottomSheet.expand(1).then(res=>{
-                 setContentHeight(1 * window.innerHeight)
-               })
-             }else {
-               setContentHeight(window.innerHeight - (startTop + tempTop))
-             }
-           }}
-      >
-        <i className="iconfont icon-drag"/>
+      <div className="bottom-sheet-header">
+        <div className="snap-zone"
+             onTouchStartCapture={(touchEvent) => {
+               touchEvent.preventDefault()
+               const container = document.getElementById('bottom-sheet-container');
+               startY = touchEvent.touches[0].clientY;
+               startTop = container.offsetTop;
+             }}
+             onTouchMoveCapture={(touchEvent) => {
+               touchEvent.preventDefault()
+               const container = document.getElementById('bottom-sheet-container');
+               tempTop = touchEvent.touches[0].clientY - startY;
+               if (startTop + tempTop >= 0) {
+                 container.style.top = startTop + tempTop + 'px';
+               }
+             }}
+             onTouchEndCapture={(touchEvent) => {
+               touchEvent.preventDefault()
+               if (startTop + tempTop >= 0.6 * window.innerHeight) {
+                 BottomSheet.close()
+               } else if (startTop + tempTop <= 0.3 * window.innerHeight) {
+                 BottomSheet.expand(1).then(res=>{
+                   setContentHeight(1 * window.innerHeight)
+                 })
+               }else {
+                 setContentHeight(window.innerHeight - (startTop + tempTop))
+               }
+             }}
+        >
+          <i className="iconfont icon-drag"/>
+        </div>
+        <i onClick={BottomSheet.close} className="iconfont icon-fold fold"/>
       </div>
-      <i onClick={BottomSheet.close} className="iconfont icon-fold"/>
       <div className="sheet-content" style={{height: contentHeight}}>
         {appStore.bottomSheetContent ? appStore.bottomSheetContent : ""}
       </div>
