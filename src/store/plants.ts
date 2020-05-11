@@ -3,7 +3,7 @@ import {
   apiGetAllPlantInstance,
   apiGetCertainPlantsInstance,
   apiGetPlants,
-  apiLikePlant
+  apiLikePlant, apiSearchPlants
 } from "../api/plant";
 import {getDispatch} from "./dispatches";
 import {stateMap, STORES} from "./const";
@@ -13,10 +13,11 @@ let initialState = {
   plantInstances: [],
   plants: [],
   skip: 0,
-  limit: 5,
+  limit: 1000,
   total: -1,
 
-  currentPlantDetail:undefined,
+  currentPlantDetail: undefined,
+  currentPlantInstance: undefined,
 };
 
 function loadPlantIds() {
@@ -74,12 +75,15 @@ export function removeLike(id) {
   })
 }
 
-export function fetchPlants() {
-  apiGetPlants(0, getState(STORES.PLANT_STORE).skip + getState(STORES.PLANT_STORE).limit).then(res => [
-    getDispatch(STORES.PLANT_STORE)({
-      plants: res.data.plants
+export function fetchPlants(params = {}) {
+  return new Promise((resolve) => {
+    apiSearchPlants(params).then(res => {
+      resolve()
+      getDispatch(STORES.PLANT_STORE)({
+        plants: res.data.plants
+      })
     })
-  ])
+  })
 }
 
 export function toggleLike(_id: string) {

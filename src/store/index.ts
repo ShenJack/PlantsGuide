@@ -2,16 +2,10 @@ import {useEffect, useState} from "react";
 import {PlantStore} from "./plants";
 import {listenersMap, reducerMap, stateMap, STORES} from "./const";
 import {getDispatch} from "./dispatches";
+import {AppStore} from "./app";
 
-let appState = {
-  loading: false,
-  bottomSheetContent: undefined,
-  bottomSheetContentType: undefined,
-  bottomSheetOpened: false,
-};
-
-stateMap.set(STORES.APP_STORE, appState);
 PlantStore.initialize(stateMap, reducerMap);
+AppStore.initialize(stateMap, reducerMap);
 
 export function useStore(store) {
   if (store === undefined) {
