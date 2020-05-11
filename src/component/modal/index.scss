@@ -1,0 +1,37 @@
+#modal-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal {
+    box-shadow: gray 0 0 2px 0;
+    border-radius: 5px;
+    position: absolute;
+    background: white;
+    width: 300px;
+    top: 20%;
+
+    .modal-header {
+      border-bottom: 1px #e6e6e6 solid;
+      height: 30px;
+
+      .close {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 13px;
+      }
+    }
+
+    .modal-content {
+      height: 400px;
+      overflow-y: scroll;
+    }
+  }
+
+}
