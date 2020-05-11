@@ -5,9 +5,9 @@
   height: 100%;
   position: relative;
   .services {
-    height: auto;
+    height: 5rem;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
 
     position: absolute;
     display: flex;
@@ -20,26 +20,22 @@
     }
 
     svg {
-      width: 3rem;
-      height: 3rem;
+      margin-top: 0.75rem;
+      width: 3.5rem;
+      height: 3.5rem;
       fill: #9ea7aa;
     }
   }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-  .description {
-    margin-top: 200px;
-    font-size: 50px;
-    color: black;
-    z-index: 1;
-
-    position: absolute;
-    top: 60%;
-    right: 10%;
+  .swiper-slide{
+    img {
+      width: 90%;
+      height: 40rem;
+      margin: auto;
+      margin-top: 5rem;
+      border-radius: 0.5rem;
+      object-fit: cover;
+      z-index: -1;
+    }
   }
 }
 

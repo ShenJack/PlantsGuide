@@ -32,7 +32,6 @@ export function PlantsList(props: ListProps) {
 function PlantItem(props: Plant) {
   return <div className="plant-item">
     <div className="brief-plant-card">
-
       <div className="plant-img">
         <img src={props.coverUrl}/>
       </div>

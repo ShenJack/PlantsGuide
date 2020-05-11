@@ -1,9 +1,17 @@
 import {Button} from "antd";
 import React from "react";
-import './index.scss'
 import {appHistory} from "../../router";
 import {from} from "rxjs/internal/observable/from";
-const illustration_pic = require("../../assets/college/cover_01.jpg");
+import Swiper from "swiper";
+import 'swiper/css/swiper.min.css';
+import './index.scss'
+const img1 = require("../../assets/college/cover_01.jpg");
+const img2 = require("../../assets/college/cover_02.jpg");
+const img3 = require("../../assets/college/cover_03.jpg");
+const img4 = require("../../assets/college/cover_04.jpg");
+const img5 = require("../../assets/college/cover_05.jpg");
+// const img6 = require("../../assets/college/cover_06.png");
+const img7 = require("../../assets/college/cover_07.jpg");
 
 export function Illustration(illustrations) {
   return(
@@ -23,11 +31,56 @@ export function Illustration(illustrations) {
             </svg>
           </div>
         </div>
-        <img src={illustration_pic} />
-        <div className="description" onClick={() => {}}>
-          <p>梅花</p>
-          {/*<p>{illutrations.name}</p>*/}
-        </div>
+        {/*<img src={img1} />*/}
+        <SwiperImg />
       </div>
   )
+}
+
+class SwiperImg extends React.Component<any,any>{
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     imgList : [0, 1, 2]
+  //   }
+  // }
+
+  componentDidMount(): void {
+    new Swiper('.swiper-container',{
+      autoplay: false,
+      loop: true,
+    })
+  }
+
+  render(){
+    return(
+      <div className='new'>
+        <div className="swiper-container">
+          <div className="swiper-wrapper">
+            <div className="swiper-slide">
+              <img src={img1} alt=""/>
+            </div>
+            <div className="swiper-slide">
+              <img src={img2} alt=""/>
+            </div>
+            <div className="swiper-slide">
+              <img src={img3} alt=""/>
+            </div>
+            <div className="swiper-slide">
+              <img src={img4} alt=""/>
+            </div>
+            <div className="swiper-slide">
+              <img src={img5} alt=""/>
+            </div>
+            {/*<div className="swiper-slide">*/}
+            {/*  <img src={img6} alt=""/>*/}
+            {/*</div>*/}
+            <div className="swiper-slide">
+              <img src={img7} alt=""/>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
