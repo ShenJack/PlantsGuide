@@ -11,6 +11,7 @@ import {AdminFormCreatePlantInstance} from "../adminForms/adminCreatePlantInstan
 import {IconButtonGroup} from "../../component/iconButtonGroup";
 import {useStore} from "../../store";
 import {PlantCard} from "../plantCard";
+import {getDispatch} from "../../store/dispatches";
 
 const AMap = (global as any).AMap;
 
@@ -18,27 +19,30 @@ function onMarkClick(mark) {
 
 }
 
-function drawItem(item) {
+function drawItem(plantInstance) {
   let map = (window as any).map;
   const customOverlay = new AMap.Marker({
-    position: [item.lng, item.lat],
+    position: [plantInstance.lng, plantInstance.lat],
     title: 'add',
     content: `<div class="anchor">
                 <div class="plant-item">
-                    <img class="icon " src="${item.plant.coverUrl}" alt="">
+                    <img class="icon " src="${plantInstance.plant.coverUrl}" alt="">
                 </div>
               </div>`,
   });
   map.add(customOverlay);
-  customOverlay.on('click', openInstanceDetail)
+  customOverlay.on('click', () => openInstanceDetail(plantInstance))
 }
 
 function createPlantInstance(param: { lng: any; lat: any }) {
   BottomSheet.open(<AdminFormCreatePlantInstance preset={param}/>, AdminFormCreatePlantInstance);
 }
 
-function openInstanceDetail(param: { lng: any; lat: any }) {
-  BottomSheet.open(<PlantCard />, PlantCard);
+function openInstanceDetail(plantInstance) {
+  getDispatch(STORES.PLANT_STORE)({
+    currentPlantInstance: plantInstance
+  })
+  BottomSheet.open(<PlantCard instance={plantInstance} hideBackButton={true}/>, PlantCard);
 }
 
 export function PlantsMap(props) {
@@ -88,6 +92,10 @@ export function PlantsMap(props) {
       prevPoint = customOverlay;
     })
 
+    let currentInstance;
+    if (currentInstance = getState(STORES.PLANT_STORE).currentPlantInstance) {
+      map.setZoomAndCenter(19, [currentInstance.lng, currentInstance.lat])
+    }
 
   }, []);
 

@@ -56,6 +56,12 @@ export function apiGetAllPlantInstance() {
   })
 }
 
+export function apiSearchPlants(params) {
+  return httpClient.get(`/plant/search`, {
+    params: params
+  })
+}
+
 export function apiGetCertainPlantsInstance(plantId) {
   return httpClient.get(`/plantInstance/list/` + plantId, {
     params: {
