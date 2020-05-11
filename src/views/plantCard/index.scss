@@ -5,21 +5,51 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 
   .back-button {
     position: fixed;
     top: 24px;
     left: 24px;
+    z-index: 2;
   }
 
-  .plant-card-img {
-    height: auto;
-    width: 100%;
-    transition: 0.2s;
+  .plant-card-header {
+    position: relative;
+    .plant-img {
+      height: auto;
+      width: 100%;
+      transition: 0.2s;
+    }
+
+    .enter-vr {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      .button{
+        width: 40px;
+        height: 22px;
+        background: rgba(222, 222, 222, 0.22);
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 15px;
+      }
+    }
   }
 
   .plant-details {
     margin-top: 1.5rem;
+
+    .tags{
+      margin: 13px 40px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .plant-name {
       font-size: 2rem;
@@ -83,6 +113,10 @@
           background: whitesmoke;
         }
 
+        .position {
+          font-size: 19px;
+        }
+
         .instance-index {
           border-radius: 50%;;
           width: 2rem;
@@ -96,7 +130,27 @@
           font-weight: bold;
         }
 
+        .like {
+          width: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .icon {
+            .icon-thumb {
+              font-size: 24px;
+            }
+          }
+
+          .count {
+            font-size: 20px;
+            font-weight: bold;
+          }
+        }
+
         .goto-map {
+          font-weight: bold;
+          font-size: 24px;
           transform: rotate(90deg);
         }
       }
