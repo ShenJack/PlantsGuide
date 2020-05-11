@@ -8,6 +8,7 @@ import {Spin} from "antd";
 import {useStore} from "./store";
 import {STORES} from "./store/const";
 import {BottomSheet} from "./component/bottomSheet";
+import {Modal} from "./component/modal";
 
 export function App() {
   return (
@@ -30,6 +31,9 @@ export function App() {
       <div id="bottom-sheet-container">
         <BottomSheet/>
       </div>
+      <div id="modal-container">
+        <Modal/>
+      </div>
     </div>
   );
 }
@@ -37,5 +41,8 @@ export function App() {
 function Loading(props) {
   let [appStore] = useStore(STORES.APP_STORE);
   return <div className={['loading-inner', appStore.loading ? "loading" : ""].join(' ')}>{appStore.loading &&
-  <Spin size={"large"}/>}</div>
+  <>
+    <Spin size={"large"}/>
+    {appStore.loadingHint && <div className="hint">{appStore.loadingHint}</div>}
+  </>}</div>
 }

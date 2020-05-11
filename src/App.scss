@@ -54,6 +54,7 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -61,6 +62,10 @@ code {
 
     &.loading {
       transform: scale(1.5);
+    }
+
+    .hint {
+
     }
   }
 
