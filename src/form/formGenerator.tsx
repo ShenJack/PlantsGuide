@@ -53,7 +53,7 @@ const Wrapper = (props) => {
       <Input value={props.value} onChange={props.onChange} placeholder={placeholder}/>
     </div>}
     {type === FormTypes.TYPE_SELECT &&
-    <Select showSearch optionFilterProp={'label'} defaultValue={props.value} style={{width: 120}}
+    <Select showSearch optionFilterProp={'label'} defaultValue={props.value} style={{width: 200}}
             onChange={props.onChange}>
       {(props.that.props.formDetail[key].list || []).map(item => <Select.Option key={item.key} label={item.value}
                                                       value={item.key}>{item.value}</Select.Option>)}
