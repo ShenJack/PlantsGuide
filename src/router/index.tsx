@@ -9,6 +9,8 @@ import {PlantCard} from "../views/plantCard";
 import {Menu} from "../views/menu";
 import {AdminFormCreatePlant} from "../views/adminForms/adminFormCreatePlant";
 import {AdminFormUpdatePlant} from "../views/adminForms/adminFormUpdatePlant";
+import {SwiperImg} from "../views/illustration";
+import {SpotsList} from "../views/illustration";
 
 export const routes = [
   {
