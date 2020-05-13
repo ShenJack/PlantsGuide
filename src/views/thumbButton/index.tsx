@@ -1,13 +1,22 @@
-import React from "react";
+import React,{useState} from "react";
 import './index.scss'
+import {apiLikePlantInstance} from "../../api/plant";
 
 interface Props {
   plantInstance: any,
 }
 
+function doLike(plantInstance: any) {
+  apiLikePlantInstance(plantInstance._id).then(res => {
+
+  })
+}
+
 export function ThumbButton(props: Props) {
-  return <div className={'like-button'}>
-    <div className={"icon " + (true ? 'liked' : '')}>
+  let [liked,setLiked] = useState(false)
+  console.log(liked)
+  return <div className={'like-button'} onClick={() => setLiked(!liked)}>
+    <div className={"icon " + (liked ? 'liked' : '')}>
       <div className="thumb">
         <i className="iconfont icon-thumb"/>
       </div>

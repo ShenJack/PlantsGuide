@@ -3,8 +3,15 @@ import * as React from 'react';
 import {IconButton} from "../../component/iconButton";
 import './index.scss'
 import {ControlPad} from "./controlPad";
+import {STORES} from "../../store/const";
+import {useStore} from "../../store";
+import {RouterProps} from "react-router";
+import {useEffect} from "react";
+import {appHistory} from "../../router";
 
-type Props = {};
+type Props = {
+  match: any
+} & RouterProps;
 const htmlAFRAME = `<a-scene>
   <a-assets>
     <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
@@ -34,15 +41,24 @@ const htmlAFRAME = `<a-scene>
   </a-camera>
 </a-scene>`
 export const VRView = (props: Props) => {
+  let [plantStore] = useStore(STORES.PLANT_STORE)
+  let instanceId = props.match.params.instanceId;
+  let instance = plantStore.plantInstances.find(item => item._id === instanceId)
+  useEffect(() => {
+    if (instance == null) {
+      // appHistory.push('/list')
+    }
+  })
+  console.log(props)
   return (
     <div className={'vr-view'}>
       <IconButton onClick={() => history.back()} className={'back-button'}>
         <i className="iconfont icon-back"/>
-      </IconButton>}
+      </IconButton>
       <div className="vr-container" dangerouslySetInnerHTML={{__html: htmlAFRAME}}/>
-      <div className="control-pad">
-        <ControlPad/>
-      </div>
+      {instance && <div className="control-pad">
+        <ControlPad instance={instance}/>
+      </div>}
     </div>
   );
 };

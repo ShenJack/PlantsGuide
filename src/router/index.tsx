@@ -25,21 +25,21 @@ export const routes = [
   },
   {
     path: "/list",
-    exact: true,
+    exact: false,
     component: List,
   },
   {
     path: "/map",
-    exact: true,
+    exact: false,
     component: PlantsMap,
   },
   {
-    path: "/vr",
-    exact: true,
+    path: "/vr/:instanceId",
+    exact: false,
     component: VRView,
   },
   {
-    path: "/plant-card",
+    path: "/plant-card/:id",
     exact: false,
     component: PlantCard
   },

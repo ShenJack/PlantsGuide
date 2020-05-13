@@ -83,3 +83,15 @@ export function apiWaterPlantInstance(plantId: string) {
   return httpClient.post(`/plantInstance/${plantId}/water`)
 }
 
+export function apiCommentPlantInstance(instanceId: string, content: string) {
+  return httpClient.post(`/comment/create`,{
+    instanceId,
+    content,
+  })
+}
+
+export function apiGetPlantInstanceComments(instanceId: string) {
+  return httpClient.post(`/comment/list`,{
+    instanceId
+  })
+}

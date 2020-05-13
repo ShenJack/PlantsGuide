@@ -1,0 +1,13 @@
+.control-pad-component {
+  display: flex;
+  justify-content: space-between;
+
+  .control-item {
+    width: 70px;
+    height: 70px;
+    margin: 5px 5px;
+    //background: whitesmoke;
+    border-radius: 10px;
+    align-items: center;
+  }
+}

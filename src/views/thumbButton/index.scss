@@ -1,45 +1,51 @@
 .like-button {
+  overflow-y: hidden;
   .icon {
-    height: 100px;
-    width: 30px;
+    margin-left: 10px;
+    height: 70px;
+    width: 40px;
     overflow-y: hidden;
     position: relative;
 
 
     &.liked {
+      //实心的
       .thumb {
-        top: 30px;
+        top: 16px;
       }
 
+      //空的
       .dianzan {
-        top: 20px;
+        top: -40px;
       }
     }
 
     .thumb{
       transition:top 200ms;
-      top: -16px;
+      top: 70px;
       position: absolute;
     }
 
     .dianzan{
       transition:top 200ms;
-      top: 30px;
+      top: 16px;
       position: absolute;
     }
 
     .icon-thumb {
-      font-size: 24px;
+      font-size: 30px;
     }
 
     .icon-dianzan {
-      font-size: 24px;
+      font-size: 30px;
     }
   }
 
   .count {
-    margin-left: 10px;
-    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    right: 12px;
+    font-size: 30px;
     font-weight: bold;
   }
 }

@@ -1,0 +1,67 @@
+.water-plant-component {
+  .water {
+    font-size: 70px;
+    transition: 200ms;
+    position: relative;
+
+    &.watered {
+      animation: doWater 2000ms linear;
+    }
+  }
+
+  @keyframes doWater {
+    0% {
+      transform: rotate(0deg) scale(1);
+      top: 0px;
+      right: 0px;
+    }
+
+    20% {
+      transform: rotate(-50deg) scale(3);
+      top: -300px;
+      right: -100px;
+    }
+
+    40% {
+      transform: rotate(-50deg) scale(3);
+      top: -280px;
+      right: -100px;
+    }
+
+    70% {
+      transform: rotate(-50deg) scale(3);
+      top: -280px;
+      right: -100px;
+      opacity: 1;
+    }
+
+    78% {
+      transform: rotate(-50deg) scale(3);
+      top: -280px;
+      right: -100px;
+      opacity: 1;
+    }
+
+    80% {
+      transform: rotate(-50deg) scale(3);
+      top: -280px;
+      right: -100px;
+      opacity: 0;
+    }
+
+    81%{
+      transform: rotate(0deg) scale(1);
+      top: 0px;
+      right: 0px;
+      opacity: 0;
+    }
+
+    90% {
+      transform: rotate(0deg) scale(1);
+    }
+
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+}

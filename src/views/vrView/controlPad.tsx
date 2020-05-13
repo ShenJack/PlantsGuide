@@ -1,17 +1,18 @@
 import React from "react";
-import {WaterPlant} from "./waterPlant";
+import {WaterPlant} from "../waterPlant/waterPlant";
 import {ThumbButton} from "../thumbButton";
 import {CommentView} from "../commentView";
+import './controlPad.scss'
 
 export function ControlPad(props) {
   return <div className={'control-pad-component'}>
-    <div className="water">
-      <WaterPlant/>
+    <div className="control-item water">
+      <WaterPlant plantInstance={props.instance}/>
     </div>
-    <div className="comment">
-      <CommentView/>
+    <div className="control-item comment">
+      <CommentView plantInstance={props.instance}/>
     </div>
-    <div className="like">
+    <div className="control-item like">
       <ThumbButton plantInstance={props.instance}/>
     </div>
   </div>

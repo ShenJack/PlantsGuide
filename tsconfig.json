@@ -4,6 +4,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "jsx": "react",
