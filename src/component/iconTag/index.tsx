@@ -1,7 +1,12 @@
 import React from "react";
 import './index.scss'
+import {getColorPreset} from "../../utils/colors";
 
 function getChildrenColor(children) {
+  let colorPreset = getColorPreset(children);
+  if (colorPreset) {
+    return colorPreset;
+  }
   let hex = hexEncode(children);
   return '#' + hex.slice(hex.length - 6, hex.length);
 }
@@ -19,7 +24,7 @@ function getTextColor(children) {
 export function IconTag(props) {
   return <div className="icon-tag-component"
               style={{background: getChildrenColor(props.children), color: getTextColor(props.children)}}>
-    <i className={"iconfont icon " + props.icon || ""}/>
+    {props.icon && <i className={"iconfont icon " + props.icon || ""}/>}
     {props.children}
   </div>
 }

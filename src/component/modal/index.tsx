@@ -9,7 +9,10 @@ export function Modal(props) {
   let [appStore] = useStore(STORES.APP_STORE);
   useEffect(() => {
     if (appStore.modalOpened) {
-      document.getElementById('modal-container').style.zIndex = '2';
+      const container =  document.getElementById('modal-container');
+      if(container){
+        container.style.zIndex = '2';
+      }
       anime({
         targets: document.getElementById('modal-container'),
         opacity: 1,
@@ -23,7 +26,10 @@ export function Modal(props) {
         easing: 'easeInOutCubic',
         duration: 200
       }).finished.then(() => {
-        document.getElementById('modal-container').style.zIndex = '-1';
+        const container =  document.getElementById('modal-container');
+        if(container){
+          container.style.zIndex = '-1';
+        }
       })
     }
   }, [appStore.modalOpened])

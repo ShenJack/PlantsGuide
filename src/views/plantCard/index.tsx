@@ -10,6 +10,7 @@ import {IconTag} from "../../component/iconTag";
 import {PlantType} from "../../utils/const";
 import {ThumbButton} from "../thumbButton";
 import {BottomSheet} from "../../component/bottomSheet";
+import {getBlossomDate, getFallDate, stringifyEndDate, stringifyStartDate} from "../../utils/date";
 
 
 interface Props {
@@ -30,10 +31,12 @@ function gotoMap(instance) {
 
 function enterVR(instance) {
   BottomSheet.close()
-  appHistory.push('/vr')
+  appHistory.push('/vr/' + instance._id)
 }
 
 export function PlantCard(props: Props) {
+  let fallDate;
+  let blossomDate;
   let [plantStore] = useStore(STORES.PLANT_STORE)
   let plant;
   if (!props.instance) {
@@ -48,10 +51,12 @@ export function PlantCard(props: Props) {
       gotoList()
     }
   }, [])
-  // let plantInstances = [];
-  // useEffect(() => {
-  //   plantInstances = plantStore.plantInstances.filter(item => item.plantId === plant._id)
-  // },[plant])
+
+  if (plant) {
+    blossomDate = getBlossomDate(plant.name);
+    fallDate = getFallDate(plant.name);
+  }
+
   return (
     <div className="plant-card">
       {!props.hideBackButton && <IconButton onClick={gotoList} className={'back-button'}>
@@ -90,6 +95,42 @@ export function PlantCard(props: Props) {
               </IconTag>
             </div>
           </div>
+          {blossomDate != null && <div className="tags blossom-date">
+            <IconTag>
+              花期
+            </IconTag>
+            <div className="start">
+              <div className="date">
+                {stringifyStartDate(blossomDate.start)}
+              </div>
+            </div>
+            <div className="to">
+              至
+            </div>
+            <div className="end">
+              <div className="date">
+                {stringifyEndDate(blossomDate.end)}
+              </div>
+            </div>
+          </div>}
+          {fallDate && <div className="tags fall-date">
+            <IconTag>
+              赏叶
+            </IconTag>
+            <div className="start">
+              <div className="date">
+                {stringifyStartDate(fallDate.start)}
+              </div>
+            </div>
+            <div className="to">
+              至
+            </div>
+            <div className="end">
+              <div className="date">
+                {stringifyEndDate(fallDate.end)}
+              </div>
+            </div>
+          </div>}
           <div className="plant-description">
             <PlantDescription description={plant.description}/>
           </div>

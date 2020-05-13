@@ -1,7 +1,9 @@
 .icon-tag-component {
   margin: 0 3px;
   padding: 2px 5px;
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   background: #9ea7aa;
   width: auto;
