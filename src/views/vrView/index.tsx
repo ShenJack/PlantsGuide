@@ -2,6 +2,7 @@
 import * as React from 'react';
 import {IconButton} from "../../component/iconButton";
 import './index.scss'
+import {ControlPad} from "./controlPad";
 
 type Props = {};
 const htmlAFRAME = `<a-scene>
@@ -9,7 +10,7 @@ const htmlAFRAME = `<a-scene>
     <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
 
     <!-- Images. -->
-    <img id="city" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+    <img id="city" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1742719065,3916193567&fm=15&gp=0.jpg">
     <img id="city-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
     <img id="cubes" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
     <img id="cubes-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
@@ -38,8 +39,9 @@ export const VRView = (props: Props) => {
       <IconButton onClick={() => history.back()} className={'back-button'}>
         <i className="iconfont icon-back"/>
       </IconButton>}
-      <div className="vr-container" dangerouslySetInnerHTML={{__html: htmlAFRAME}}>
-
+      <div className="vr-container" dangerouslySetInnerHTML={{__html: htmlAFRAME}}/>
+      <div className="control-pad">
+        <ControlPad/>
       </div>
     </div>
   );

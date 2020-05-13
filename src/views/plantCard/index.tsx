@@ -8,6 +8,8 @@ import {IconButton} from "../../component/iconButton";
 import {getDispatch} from "../../store/dispatches";
 import {IconTag} from "../../component/iconTag";
 import {PlantType} from "../../utils/const";
+import {ThumbButton} from "../thumbButton";
+import {BottomSheet} from "../../component/bottomSheet";
 
 
 interface Props {
@@ -24,6 +26,11 @@ function gotoMap(instance) {
   getDispatch(STORES.PLANT_STORE)({
     currentPlantInstance: instance,
   })
+}
+
+function enterVR(instance) {
+  BottomSheet.close()
+  appHistory.push('/vr')
 }
 
 export function PlantCard(props: Props) {
@@ -54,11 +61,13 @@ export function PlantCard(props: Props) {
       <div>
         <div className={'plant-card-header'}>
           <img className="plant-img" src={plant && plant.coverUrl} alt={plant.name}/>
+          {props.instance && props.instance.vrUrl &&
           <div className="enter-vr">
-            <div className="button" onClick={() => appHistory.push('/vr')}>
+            <div className="button" onClick={() => enterVR(props.instance)}>
               VR
             </div>
           </div>
+          }
         </div>
         <div className="plant-details">
           <h5 className="plant-name">
@@ -96,10 +105,7 @@ export function PlantCard(props: Props) {
                   二教
                 </div>
                 <div className="like">
-                  <div className="icon">
-                    <i className="iconfont icon-thumb"/>
-                  </div>
-                  <div className="count">{plantInstance.likes || 0}</div>
+                  <ThumbButton plantInstance={plantInstance}/>
                 </div>
                 <div className="goto-map" onClick={() => gotoMap(plantInstance)}>
                   <i className="iconfont icon-fold enter"/>

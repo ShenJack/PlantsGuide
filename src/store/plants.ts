@@ -1,9 +1,9 @@
 import {
-  apiCancelLike,
+  apiCancelLikePlantInstance,
   apiGetAllPlantInstance,
   apiGetCertainPlantsInstance,
   apiGetPlants,
-  apiLikePlant, apiSearchPlants
+  apiLikePlantInstance, apiSearchPlants
 } from "../api/plant";
 import {getDispatch} from "./dispatches";
 import {stateMap, STORES} from "./const";
@@ -54,7 +54,7 @@ export function getPlantIds() {
 }
 
 export function addLike(id) {
-  apiLikePlant(id).then(res => {
+  apiLikePlantInstance(id).then(res => {
     const data = getState(STORES.PLANT_STORE).likedPlantIds.concat(id);
     getDispatch(STORES.PLANT_STORE)({
       likedPlantIds: data
@@ -65,7 +65,7 @@ export function addLike(id) {
 }
 
 export function removeLike(id) {
-  apiCancelLike(id).then(res => {
+  apiCancelLikePlantInstance(id).then(res => {
     const data = getState(STORES.PLANT_STORE).likedPlantIds.filter(item => item !== id);
     getDispatch(STORES.PLANT_STORE)({
       likedPlantIds: data

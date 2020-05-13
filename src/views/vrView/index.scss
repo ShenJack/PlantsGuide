@@ -1,9 +1,27 @@
 .vr-view{
-  .vr-container{
+  .vr-container {
     z-index: -1;
   }
 
-  .back-button{
+  .back-button {
+    position: fixed;
+    top: 24px;
+    left: 24px;
     z-index: 2;
+  }
+
+  .control-pad {
+    position: fixed;
+    bottom: 20px;
+    z-index: 2;
+    width: 80%;
+    margin: 0 10%;
+
+    .control-pad-component {
+      width: 100%;
+      height: 80px;
+      background: rgba(245, 245, 245, 0.51);
+      border-radius: 10px;
+    }
   }
 }

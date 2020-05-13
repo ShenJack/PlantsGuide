@@ -71,11 +71,15 @@ export function apiGetCertainPlantsInstance(plantId) {
   })
 }
 
-export function apiLikePlant(plantId: string) {
-  return httpClient.post(`/plant/${plantId}/like`)
+export function apiLikePlantInstance(plantId: string) {
+  return httpClient.post(`/plantInstance/${plantId}/like`)
 }
 
-export function apiCancelLike(plantId: string) {
-  return httpClient.post(`/plant/${plantId}/like/cancel`)
+export function apiCancelLikePlantInstance(plantId: string) {
+  return httpClient.post(`/plantInstance/${plantId}/like/cancel`)
+}
+
+export function apiWaterPlantInstance(plantId: string) {
+  return httpClient.post(`/plantInstance/${plantId}/water`)
 }
 

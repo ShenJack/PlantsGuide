@@ -1,0 +1,45 @@
+.like-button {
+  .icon {
+    height: 100px;
+    width: 30px;
+    overflow-y: hidden;
+    position: relative;
+
+
+    &.liked {
+      .thumb {
+        top: 30px;
+      }
+
+      .dianzan {
+        top: 20px;
+      }
+    }
+
+    .thumb{
+      transition:top 200ms;
+      top: -16px;
+      position: absolute;
+    }
+
+    .dianzan{
+      transition:top 200ms;
+      top: 30px;
+      position: absolute;
+    }
+
+    .icon-thumb {
+      font-size: 24px;
+    }
+
+    .icon-dianzan {
+      font-size: 24px;
+    }
+  }
+
+  .count {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
