@@ -1,19 +1,18 @@
 import {Button} from "antd";
-import React from "react";
+import React,{useState} from "react";
 import {appHistory} from "../../router";
 import {from} from "rxjs/internal/observable/from";
 import Swiper from "swiper";
 import 'swiper/css/swiper.min.css';
 import './index.scss'
+import {getDirectiveValues} from "graphql";
 const img1 = require("../../assets/college/cover_01.jpg");
 const img2 = require("../../assets/college/cover_02.jpg");
 const img3 = require("../../assets/college/cover_03.jpg");
 const img4 = require("../../assets/college/cover_04.jpg");
-const img5 = require("../../assets/college/cover_05.jpg");
-// const img6 = require("../../assets/college/cover_06.png");
-const img7 = require("../../assets/college/cover_07.jpg");
 
 export function Illustration(illustrations) {
+  const [folded, setfolded] = useState(false);
   return(
       <div className="illustration">
         <div className="services">
@@ -30,25 +29,29 @@ export function Illustration(illustrations) {
                 p-id="20367"></path>
             </svg>
           </div>
-          <div className="title">
-            北林风光
-          </div>
-          <div className="share">
+
+          <div className="fold" onClick={() => {
+            setfolded(!folded);
+          }}>
             <svg className="icon" viewBox="0 0 1024 1024" version="1.1"
-                 xmlns="http://www.w3.org/2000/svg" p-id="4105" width="32" height="32">
+                 xmlns="http://www.w3.org/2000/svg" p-id="4612" width="32" height="32">
               <path
-                d="M837.818182 116.363636c38.493091 0 69.818182 31.325091 69.818182 69.818182s-31.325091 69.818182-69.818182 69.818182-69.818182-31.325091-69.818182-69.818182 31.325091-69.818182 69.818182-69.818182M232.727273 628.363636c-64.162909 0-116.363636-52.200727-116.363637-116.363636s52.200727-116.363636 116.363637-116.363636 116.363636 52.200727 116.363636 116.363636-52.200727 116.363636-116.363636 116.363636m605.090909 139.636364c38.493091 0 69.818182 31.325091 69.818182 69.818182s-31.325091 69.818182-69.818182 69.818182-69.818182-31.325091-69.818182-69.818182 31.325091-69.818182 69.818182-69.818182m0-442.181818a139.636364 139.636364 0 0 0 0-279.272727 139.636364 139.636364 0 0 0-139.636364 139.636363c0 13.754182 2.071273 26.996364 5.771637 39.540364l-330.123637 165.050182A185.483636 185.483636 0 0 0 232.727273 325.818182a186.181818 186.181818 0 0 0 0 372.363636c56.087273 0 106.24-24.901818 140.381091-64.139636l328.378181 173.847273A139.240727 139.240727 0 0 0 698.181818 837.818182a139.636364 139.636364 0 0 0 279.272727 0 139.636364 139.636364 0 0 0-139.636363-139.636364 139.124364 139.124364 0 0 0-104.680727 47.453091l-324.887273-172.008727A185.716364 185.716364 0 0 0 418.909091 512a185.716364 185.716364 0 0 0-10.263273-60.555636l331.357091-165.678546A139.170909 139.170909 0 0 0 837.818182 325.818182"
-               height="3rem" width="3rem" p-id="4106"></path>
+                d="M491.904 380.638H112.171c-16.032 0-29.091 10.99-29.091 24.437 0 13.446 13.059 24.436 29.09 24.436h379.864c16.032 0 29.09-10.99 29.09-24.436-0.129-13.576-13.187-24.437-29.22-24.437z m0 216.049H112.171c-16.032 0-29.091 10.99-29.091 24.436 0 13.447 13.059 24.437 29.09 24.437h379.864c16.032 0 29.09-10.99 29.09-24.437-0.129-13.446-13.187-24.436-29.22-24.436z m-0.517 216.307H112.56c-16.291 0-29.608 10.99-29.608 24.436 0 13.447 13.188 24.437 29.608 24.437h378.828c16.42 0 29.608-10.99 29.608-24.437 0-13.446-13.188-24.436-29.608-24.436zM681.19 334.739h93.737v316.897c0 16.033 10.99 29.091 24.437 29.091 13.446 0 24.307-13.058 24.307-29.09V334.738h93.737c14.74 0 21.85-3.878 23.273-6.723 1.164-2.327-0.13-9.438-8.145-19.394l-102.53-128.258c-8.404-10.602-19.264-16.291-30.513-16.291-11.378 0-22.109 5.818-30.513 16.29L666.32 308.753c-7.886 9.955-9.18 17.066-8.016 19.393 0.905 2.716 8.146 6.594 22.885 6.594z"
+                p-id="4613"></path>
+              <path
+                d="M112.688 861.737h768c16.291 0 29.608-10.99 29.608-24.436s-13.188-24.436-29.608-24.436h-768c-16.29 0-29.608 10.99-29.608 24.436 0 13.576 13.188 24.436 29.608 24.436z m379.216-697.535H112.171c-16.032 0-29.091 10.99-29.091 24.436 0 13.447 13.059 24.437 29.09 24.437h379.864c16.032 0 29.09-10.99 29.09-24.437-0.129-13.446-13.187-24.436-29.22-24.436z"
+                p-id="4614"></path>
             </svg>
           </div>
         </div>
-        {/*<img src={img1} />*/}
-        <SwiperImg />
+        {
+          folded?  <SpotsList/>:<SwiperImg />
+        }
       </div>
   )
 }
 
-class SwiperImg extends React.Component<any,any>{
+export class SwiperImg extends React.Component<any,any>{
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -69,29 +72,70 @@ class SwiperImg extends React.Component<any,any>{
         <div className="swiper-container">
           <div className="swiper-wrapper">
             <div className="swiper-slide">
+              <div className="title">
+                主楼
+              </div>
               <img src={img1} alt=""/>
             </div>
             <div className="swiper-slide">
+              <div className="title">
+                学研
+              </div>
               <img src={img2} alt=""/>
             </div>
             <div className="swiper-slide">
+              <div className="title">
+                图书馆
+              </div>
               <img src={img3} alt=""/>
             </div>
             <div className="swiper-slide">
+              <div className="title">
+                操场
+              </div>
               <img src={img4} alt=""/>
-            </div>
-            <div className="swiper-slide">
-              <img src={img5} alt=""/>
-            </div>
-            {/*<div className="swiper-slide">*/}
-            {/*  <img src={img6} alt=""/>*/}
-            {/*</div>*/}
-            <div className="swiper-slide">
-              <img src={img7} alt=""/>
             </div>
           </div>
         </div>
       </div>
     )
   }
+}
+
+export function SpotsList() {
+  return(
+    <div className="img-list">
+      <div className="swiper-temp-group">
+        <div className="swiper-temp">
+          <div className="title-temp">
+            主楼
+          </div>
+          <img src={img1} alt=""/>
+        </div>
+
+        <div className="swiper-temp">
+          <div className="title-temp">
+            学研
+          </div>
+          <img src={img2} alt=""/>
+        </div>
+      </div>
+
+      <div className="swiper-temp-group">
+        <div className="swiper-temp">
+          <div className="title-temp">
+            图书馆
+          </div>
+          <img src={img3} alt=""/>
+        </div>
+
+        <div className="swiper-temp">
+          <div className="title-temp">
+            操场
+          </div>
+          <img src={img4} alt=""/>
+        </div>
+      </div>
+    </div>
+  )
 }

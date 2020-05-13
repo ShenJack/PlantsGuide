@@ -4,22 +4,18 @@
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: rgba(229,223,223,0.36);
+  background-color: rgba(229, 223, 223, 0.36);
+
   .services {
-    height: 5rem;
+    height: 8rem;
     width: 95%;
+    margin-left: 2.5%;
     z-index: 100;
-    margin: auto;
 
     position: absolute;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    .menu::before:active{
-      transform: scale(0.95);
-      transition: 0.2s;
-    }
 
     svg {
       margin-top: 0.75rem;
@@ -27,16 +23,44 @@
       height: 3.5rem;
       fill: #9ea7aa;
     }
+
   }
-  .swiper-slide{
+
+  .swiper-slide {
+    padding-top: 3rem;
+    text-align: center;
+    .title {
+      margin-top: 0.5rem;
+      font-size: 1.5rem;
+      color: #125749;
+    }
     img {
       width: 90%;
       height: 40rem;
       margin: auto;
-      margin-top: 8rem;
+      margin-top: 1rem;
       border-radius: 0.5rem;
       object-fit: cover;
       z-index: -1;
+    }
+  }
+  .img-list{
+    padding-top: 8rem;
+    .swiper-temp-group{
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .swiper-temp{
+        width: 45%;
+        text-align: center;
+        font-size: 1.5rem;
+        img{
+          border-radius: 0.25rem;
+        }
+      }
     }
   }
 }
