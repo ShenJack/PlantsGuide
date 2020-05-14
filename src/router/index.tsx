@@ -9,8 +9,11 @@ import {PlantCard} from "../views/plantCard";
 import {Menu} from "../views/menu";
 import {AdminFormCreatePlant} from "../views/adminForms/adminFormCreatePlant";
 import {AdminFormUpdatePlant} from "../views/adminForms/adminFormUpdatePlant";
-import {SwiperImg} from "../views/illustration";
-import {SpotsList} from "../views/illustration";
+import {ZhulouIllustrationSpotsMap} from "../views/illustrationSpotsMap/zhulou";
+import {XueyanIllustrationSpotsMap} from "../views/illustrationSpotsMap/xueyan";
+import {LibraryllustrationSpotsMap} from "../views/illustrationSpotsMap/library";
+import {PlaygroundIllustrationSpotsMap} from "../views/illustrationSpotsMap/playground";
+
 
 export const routes = [
   {
@@ -57,6 +60,26 @@ export const routes = [
     path: "/admin/forms/update",
     exact: true,
     component: AdminFormUpdatePlant
+  },
+  {
+    path: "/zhulou",
+    exact: true,
+    component: ZhulouIllustrationSpotsMap
+  },
+  {
+    path: "/xueyan",
+    exact: true,
+    component: XueyanIllustrationSpotsMap
+  },
+  {
+    path: "/library",
+    exact: true,
+    component: LibraryllustrationSpotsMap
+  },
+  {
+    path: "/playground",
+    exact: true,
+    component: PlaygroundIllustrationSpotsMap
   }
 ];
 
