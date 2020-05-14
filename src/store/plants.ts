@@ -126,7 +126,37 @@ export const PlantStore = {
   loadNextPage,
   loadPlantInstances,
   waterPlant,
+  isInstanceLiked,
+  likePlantInstance,
+  cancelLikePlantInstance,
 };
+
+function likePlantInstance(instanceId) {
+  return new Promise((resolve, reject) => {
+    apiLikePlantInstance(instanceId).then(res => {
+      resolve(res.data.count);
+      const ids = JSON.parse(localStorage.getItem("LIKED_PLANTS")) || [];
+      ids.push(instanceId);
+      localStorage.setItem("LIKED_PLANTS", JSON.stringify(ids))
+    })
+  })
+}
+
+function cancelLikePlantInstance(instanceId) {
+  return new Promise((resolve, reject) => {
+    apiCancelLikePlantInstance(instanceId).then(res => {
+      resolve(res.data.count);
+      const ids = JSON.parse(localStorage.getItem("LIKED_PLANTS")) || [];
+      ids.remove(instanceId);
+      localStorage.setItem("LIKED_PLANTS", JSON.stringify(ids))
+    })
+  })
+}
+
+function isInstanceLiked(instanceId) {
+  const ids = JSON.parse(localStorage.getItem("LIKED_PLANTS")) || [];
+  return ids.includes(instanceId);
+}
 
 function loadNextPage() {
   let tempSkip = getState(STORES.PLANT_STORE).skip + getState(STORES.PLANT_STORE).limit;

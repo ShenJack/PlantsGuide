@@ -1,4 +1,5 @@
 .like-button {
+  display: flex;
   overflow-y: hidden;
   .icon {
     margin-left: 10px;
@@ -42,9 +43,6 @@
   }
 
   .count {
-    position: absolute;
-    top: 20px;
-    right: 12px;
     font-size: 30px;
     font-weight: bold;
   }
