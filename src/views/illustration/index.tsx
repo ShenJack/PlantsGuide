@@ -11,7 +11,7 @@ const img2 = require("../../assets/college/cover_02.jpg");
 const img3 = require("../../assets/college/cover_03.jpg");
 const img4 = require("../../assets/college/cover_04.jpg");
 
-export function Illustration(illustrations) {
+export function Illustration() {
   const [folded, setfolded] = useState(false);
   return(
       <div className="illustration">
@@ -71,25 +71,29 @@ export class SwiperImg extends React.Component<any,any>{
       <div className='new'>
         <div className="swiper-container">
           <div className="swiper-wrapper">
-            <div className="swiper-slide">
+            <div className="swiper-slide" onClick={()=>{
+              appHistory.push('/zhulou')}}>
               <div className="title">
                 主楼
               </div>
               <img src={img1} alt=""/>
             </div>
-            <div className="swiper-slide">
+            <div className="swiper-slide" onClick={()=>{
+              appHistory.push('/xueyan')}}>
               <div className="title">
                 学研
               </div>
               <img src={img2} alt=""/>
             </div>
-            <div className="swiper-slide">
+            <div className="swiper-slide" onClick={()=>{
+              appHistory.push('/library')}}>
               <div className="title">
                 图书馆
               </div>
               <img src={img3} alt=""/>
             </div>
-            <div className="swiper-slide">
+            <div className="swiper-slide" onClick={()=>{
+              appHistory.push('/playground')}}>
               <div className="title">
                 操场
               </div>
@@ -106,14 +110,16 @@ export function SpotsList() {
   return(
     <div className="img-list">
       <div className="swiper-temp-group">
-        <div className="swiper-temp">
+        <div className="swiper-temp" onClick={()=>{
+          appHistory.push('/zhulou')}}>
           <div className="title-temp">
             主楼
           </div>
           <img src={img1} alt=""/>
         </div>
 
-        <div className="swiper-temp">
+        <div className="swiper-temp" onClick={()=>{
+          appHistory.push('/xueyan')}}>
           <div className="title-temp">
             学研
           </div>
@@ -122,7 +128,8 @@ export function SpotsList() {
       </div>
 
       <div className="swiper-temp-group">
-        <div className="swiper-temp">
+        <div className="swiper-temp" onClick={()=>{
+          appHistory.push('/library')}}>
           <div className="title-temp">
             图书馆
           </div>
@@ -130,7 +137,8 @@ export function SpotsList() {
         </div>
 
         <div className="swiper-temp">
-          <div className="title-temp">
+          <div className="title-temp" onClick={()=>{
+            appHistory.push('/zhulou')}}>
             操场
           </div>
           <img src={img4} alt=""/>
