@@ -16,6 +16,7 @@ import {getBlossomDate, getFallDate, stringifyEndDate, stringifyStartDate} from 
 interface Props {
   hideBackButton?: boolean
   instance?: any
+  match?:any
 }
 
 function gotoList() {
@@ -40,7 +41,8 @@ export function PlantCard(props: Props) {
   let [plantStore] = useStore(STORES.PLANT_STORE)
   let plant;
   if (!props.instance) {
-    plant = plantStore.currentPlantDetail;
+    let plantId = props.match.params.plantId;
+    plant = plantStore.plants.find(item => item._id === plantId)
   } else {
     plant = props.instance.plant;
   }

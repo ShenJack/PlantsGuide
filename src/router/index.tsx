@@ -42,7 +42,7 @@ export const routes = [
     component: VRView,
   },
   {
-    path: "/plant-card/:id",
+    path: "/plant-card/:plantId",
     exact: false,
     component: PlantCard
   },
