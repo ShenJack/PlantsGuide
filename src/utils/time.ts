@@ -1,9 +1,6 @@
 import moment, {Moment} from "moment";
 
 export function formatTime(time) {
-  if (typeof time === "string") {
-    time = parseInt(time);
-  }
   let momentTime = moment(time);
   let diff = moment().diff(momentTime);
   if (diff < 60 * 1000) {

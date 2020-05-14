@@ -10,7 +10,7 @@ export function ControlPad(props) {
       <WaterPlant plantInstance={props.instance}/>
     </div>
     <div className="control-item comment">
-      <CommentView plantInstance={props.instance}/>
+      {props.instance && <CommentView plantInstance={props.instance}/>}
     </div>
     <div className="control-item like">
       <ThumbButton plantInstance={props.instance}/>

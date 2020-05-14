@@ -3,7 +3,7 @@ import {
   apiGetAllPlantInstance,
   apiGetCertainPlantsInstance,
   apiGetPlants,
-  apiLikePlantInstance, apiSearchPlants
+  apiLikePlantInstance, apiSearchPlants, apiWaterPlantInstance
 } from "../api/plant";
 import {getDispatch} from "./dispatches";
 import {stateMap, STORES} from "./const";
@@ -64,6 +64,21 @@ export function addLike(id) {
   })
 }
 
+export function waterPlant(instanceId) {
+  return new Promise((resolve, reject) => {
+    const ids = JSON.parse(localStorage.getItem("WATERED_PLANT"))||[]
+    if (!ids.includes(instanceId)) {
+      ids.push(instanceId);
+      apiWaterPlantInstance(instanceId).then(res => {
+        localStorage.setItem("WATERED_PLANT", JSON.stringify(ids))
+        resolve()
+      })
+    } else {
+      reject()
+    }
+  })
+}
+
 export function removeLike(id) {
   apiCancelLikePlantInstance(id).then(res => {
     const data = getState(STORES.PLANT_STORE).likedPlantIds.filter(item => item !== id);
@@ -110,6 +125,7 @@ export const PlantStore = {
   loadPlantInstancesByPlantId,
   loadNextPage,
   loadPlantInstances,
+  waterPlant,
 };
 
 function loadNextPage() {

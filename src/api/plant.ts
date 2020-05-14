@@ -79,8 +79,8 @@ export function apiCancelLikePlantInstance(plantId: string) {
   return httpClient.post(`/plantInstance/${plantId}/like/cancel`)
 }
 
-export function apiWaterPlantInstance(plantId: string) {
-  return httpClient.post(`/plantInstance/${plantId}/water`)
+export function apiWaterPlantInstance(instanceId: string) {
+  return httpClient.post(`/plantInstance/${instanceId}/water`)
 }
 
 export function apiCommentPlantInstance(instanceId: string, content: string) {
