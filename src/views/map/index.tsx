@@ -19,6 +19,13 @@ function onMarkClick(mark) {
 
 }
 
+interface Props {
+  //是否允许点击添加植物的功能
+  enableAdd: boolean,
+  //要定位的中心位置
+  center?: Array<any>,
+}
+
 function drawItem(plantInstance) {
   let map = (window as any).map;
   const customOverlay = new AMap.Marker({
@@ -45,17 +52,24 @@ function openInstanceDetail(plantInstance) {
   BottomSheet.open(<PlantCard instance={plantInstance} hideBackButton={true}/>, PlantCard);
 }
 
-export function PlantsMap(props) {
+export function PlantsMap(props: Props) {
   const {enableAdd} = props;
   const BackButton = useRef(undefined);
   const [plantStore] = useStore(STORES.PLANT_STORE);
+  const asComponent = props.center != undefined;
   useEffect(() => {
+    let center: any[];
+    if (props.center) {
+      center = props.center;
+    } else {
+      center = [116.34458063140511, 40.00588141184491]
+    }
     let map;
     // let bounds = new qq.maps.LatLngBounds(new qq.maps.LatLng(40.00076109484555, 116.33997917175293),
     //   new qq.maps.LatLng(40.0108528801675, 116.3487982749939));
     (window as any).map = map = new AMap.Map('map-container', {
-      zoom: 16,
-      center: [116.34458063140511, 40.00588141184491],
+      zoom: props.center ? 19 : 16,
+      center,
     });
 
     let mapLogo = document.querySelector(".amap-logo");
@@ -121,23 +135,22 @@ export function PlantsMap(props) {
 
   return (
     <div className="map-page">
-      <IconButton ref={BackButton} className="back" onClick={back}>
+      {!asComponent && <IconButton ref={BackButton} className="back" onClick={back}>
         <i className="iconfont icon-back"/>
-      </IconButton>
+      </IconButton>}
       <div id="map-container"/>
 
-      <IconButtonGroup className="map-zoom-control">
-        <IconButton onClick={() => (window as any).map.zoomIn()}>
-          <i className="iconfont icon-plus"/>
-        </IconButton>
+      {
+        !asComponent && <IconButtonGroup className="map-zoom-control">
+          <IconButton onClick={() => (window as any).map.zoomIn()}>
+            <i className="iconfont icon-plus"/>
+          </IconButton>
 
-        <IconButton onClick={() => (window as any).map.zoomOut()}>
-          <i className="iconfont icon-minus"/>
-        </IconButton>
-      </IconButtonGroup>
-
-      <div className="plant-list">
-      </div>
+          <IconButton onClick={() => (window as any).map.zoomOut()}>
+            <i className="iconfont icon-minus"/>
+          </IconButton>
+        </IconButtonGroup>
+      }
     </div>
   );
 }
