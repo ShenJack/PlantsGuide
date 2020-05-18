@@ -91,7 +91,13 @@ export function apiCommentPlantInstance(instanceId: string, content: string) {
 }
 
 export function apiGetPlantInstanceComments(instanceId: string) {
-  return httpClient.post(`/comment/list`,{
+  return httpClient.post(`/comment/list`, {
     instanceId
+  })
+}
+
+export function apiGetAdjacentPlantInstances(lat, lng) {
+  return httpClient.post(`/plantInstance/adjacent`, {
+    lat, lng
   })
 }

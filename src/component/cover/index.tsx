@@ -3,12 +3,12 @@ import "./index.scss";
 import {useStore} from "../../store";
 import {STORES} from "../../store/const";
 
-const coverImg = require('../../assets/college/college-icon.jpg')
+const coverImg = require('../../assets/college/college-icon.gif')
 
 export function Cover(props) {
   let [appStore] = useStore(STORES.APP_STORE);
   return (
-    <div className={['cover-inner', appStore.cover]}>
+    <div className={['cover-inner', appStore.cover].join(' ')}>
       {
         appStore.cover && <CoverAnimation/>
       }

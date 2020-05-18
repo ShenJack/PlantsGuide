@@ -1,5 +1,6 @@
-import React,{useState} from "react";
+import React, {useState, useEffect} from "react";
 import './index.scss';
+import {apiGetAdjacentPlantInstances} from "../../api/plant";
 
 const img1 = require('../../assets/plants/zhulou/090_山桃.jpg');
 const img2 = require('../../assets/plants/zhulou/151_火炬树.jpg');
@@ -11,7 +12,11 @@ const img7 = require('../../assets/plants/zhulou/020_矮紫杉.jpg');
 const img8 = require('../../assets/plants/zhulou/070_‘金山’绣线菊.jpg');
 const img9 = require('../../assets/plants/zhulou/185_楸树.jpg');
 
-export class ZhulouIllustrationSpotsMap extends React.Component<any, any>{
+export class ZhulouIllustrationSpotsMap extends React.Component<any, any> {
+  componentDidMount(): void {
+    apiGetAdjacentPlantInstances(40.00588141184491, 116.34458063140511).then(console.log)
+  }
+
   render(): React.ReactNode {
     return (
       <div className="illustration-spots-map">
