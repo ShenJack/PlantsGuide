@@ -14,86 +14,65 @@ export class LibraryllustrationSpotsMap extends React.Component<any, any>{
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              重瓣榆叶梅
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              杂种鹅掌楸
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              王族海棠
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              大叶黄杨
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              白刺花
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              扶芳藤
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              紫叶桃
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              白玉兰
             </div>
           </div>
 
           <div className="plant">
             <img src={img} alt=""/>
             <div className="plant-name">
-              北林
+              圆柏
             </div>
           </div>
-
-          {/*<div className="plant">*/}
-          {/*  <img src={img} alt=""/>*/}
-          {/*  <div className="plant-name">*/}
-          {/*    北林*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-
-          {/*<div className="plant">*/}
-          {/*  <img src={img} alt=""/>*/}
-          {/*  <div className="plant-name">*/}
-          {/*    北林*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-
-          {/*<div className="plant">*/}
-          {/*  <img src={img} alt=""/>*/}
-          {/*  <div className="plant-name">*/}
-          {/*    北林*/}
-          {/*  </div>*/}
-          {/*</div>*/}
         </div>
         <div className="plant-map">
 

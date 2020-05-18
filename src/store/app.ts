@@ -2,6 +2,7 @@ import {STORES} from "./const";
 import {getDispatch} from "./dispatches";
 
 let appState = {
+  cover: false,
   loading: false,
   bottomSheetContent: undefined,
   bottomSheetContentType: undefined,

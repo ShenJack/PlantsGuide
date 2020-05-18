@@ -9,10 +9,14 @@ import {useStore} from "./store";
 import {STORES} from "./store/const";
 import {BottomSheet} from "./component/bottomSheet";
 import {Modal} from "./component/modal";
+import {Cover} from "./component/cover";
 
 export function App() {
   return (
     <div className="app-content">
+      <div id="cover-container">
+        <Cover/>
+      </div>
       <Router history={appHistory}>
         <Switch>
           <AnimatedSwitch

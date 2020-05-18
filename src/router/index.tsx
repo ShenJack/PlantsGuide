@@ -1,6 +1,6 @@
 import {createHashHistory} from "history";
 import React from "react";
-import {Cover} from "../views/cover";
+import {Cover} from "../component/cover";
 import {Home} from "../views/home";
 import {List} from "../views/list";
 import {PlantsMap} from "../views/map";
@@ -60,6 +60,11 @@ export const routes = [
     path: "/admin/forms/update",
     exact: true,
     component: AdminFormUpdatePlant
+  },
+  {
+    path: "/cover",
+    exact: true,
+    component: Cover
   },
   {
     path: "/zhulou",

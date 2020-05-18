@@ -1,0 +1,25 @@
+@import "../../style/base";
+
+.cover {
+  img{
+    animation-duration: 3s;
+    animation-name: slidein;
+  }
+
+  @keyframes slidein {
+    from{
+      margin-top: 0;
+      opacity: 0;
+    }
+
+    50%{
+      margin-top: 50%;
+      opacity: 100%;
+    }
+
+    to{
+      margin-top: 50%;
+      opacity: 0;
+    }
+  }
+}
