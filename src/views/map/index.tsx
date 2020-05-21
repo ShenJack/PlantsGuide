@@ -5,13 +5,18 @@ import {IconButton} from "../../component/iconButton";
 import {appHistory} from "../../router";
 // @ts-ignore
 import {BottomSheet} from "../../component/bottomSheet";
-import {getState} from "../../store/plants";
+import {getState, PlantStore} from "../../store/plants";
 import {STORES} from "../../store/const";
 import {AdminFormCreatePlantInstance} from "../adminForms/adminCreatePlantInstance";
 import {IconButtonGroup} from "../../component/iconButtonGroup";
 import {useStore} from "../../store";
 import {PlantCard} from "../plantCard";
 import {getDispatch} from "../../store/dispatches";
+import {apiCreatePlantInstance} from "../../api/plant";
+import {message} from "antd";
+import qs from 'qs'
+import {useLocation} from "react-router";
+
 
 const AMap = (global as any).AMap;
 
@@ -24,16 +29,18 @@ interface Props {
   enableAdd: boolean,
   //要定位的中心位置
   center?: Array<any>,
+
+  match: any,
 }
 
 function drawItem(plantInstance) {
   let map = (window as any).map;
   const customOverlay = new AMap.Marker({
-    position: [plantInstance.lng, plantInstance.lat],
+    position: [plantInstance?.lng, plantInstance?.lat],
     title: 'add',
     content: `<div class="anchor">
                 <div class="plant-item">
-                    <img class="icon " src="${plantInstance.plant.coverUrl}" alt="">
+                    <img class="icon " src="${plantInstance?.plant?.coverUrl}" alt="">
                 </div>
               </div>`,
   });
@@ -53,10 +60,18 @@ function openInstanceDetail(plantInstance) {
 }
 
 export function PlantsMap(props: Props) {
-  const {enableAdd} = props;
+  const {enableAdd = true} = props;
   const BackButton = useRef(undefined);
   const [plantStore] = useStore(STORES.PLANT_STORE);
   const asComponent = props.center != undefined;
+
+  //可以通过在hashRouter的路由后缀加入query参数： quickInsert和plantId来指定快速添加和快速添加的实例对应的植物id
+  let location = useLocation();
+  const query = qs.parse(location.search.split('?')[1])
+  const quickInsert = useRef(undefined);
+  quickInsert.current = query?.quickInsert != undefined;
+  const plantId = useRef(undefined);
+  plantId.current = query?.plantId;
   useEffect(() => {
     let center: any[];
     if (props.center) {
@@ -85,14 +100,26 @@ export function PlantsMap(props: Props) {
     let prevPoint;
 
     map.on('click', (event) => {
-      // if (!enableAdd) {
-      //   return
-      // }
+      if (!enableAdd) {
+        return
+      }
       if (prevPoint) {
         map.remove(prevPoint);
       }
       const lat = event.lnglat.Q;
       const lng = event.lnglat.R;
+
+      if (quickInsert.current && plantId.current) {
+        apiCreatePlantInstance({
+          lat,
+          lng,
+          plantId:plantId.current
+        }).then(res => {
+          message.success("已添加植物实例")
+          PlantStore.loadPlantInstances();
+        });
+        return;
+      }
 
       const customOverlay = new AMap.Marker({
         position: [lng, lat],
