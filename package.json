@@ -26,7 +26,7 @@
     "http-status": "^1.4.0",
     "immutable": "^4.0.0-rc.12",
     "ip": "1.1.5",
-    "lodash": "4.17.11",
+    "lodash": "4.17.19",
     "minimist": "1.2.0",
     "moment": "^2.24.0",
     "passport-github": "^1.1.0",
