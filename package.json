@@ -20,7 +20,7 @@
     "disqus-react": "^1.0.7",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
-    "highlight.js": "^9.15.10",
+    "highlight.js": "^10.4.1",
     "history": "^4.10.1",
     "html-to-react": "^1.4.2",
     "http-status": "^1.4.0",
