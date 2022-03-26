@@ -27,7 +27,7 @@
     "immutable": "^4.0.0-rc.12",
     "ip": "1.1.5",
     "lodash": "4.17.11",
-    "minimist": "1.2.0",
+    "minimist": "1.2.6",
     "moment": "^2.24.0",
     "passport-github": "^1.1.0",
     "react": "^16.10.2",
